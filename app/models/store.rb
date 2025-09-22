@@ -1,8 +1,8 @@
-class User < ApplicationRecord
+class Store < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  #has_one :user_image, dependent: :destroy
+  has_many :store_images, dependent: :destroy
 end
