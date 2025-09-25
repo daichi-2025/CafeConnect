@@ -9,6 +9,7 @@ class StoresController < ApplicationController
   end
 
   def mypage
+    
   end
 
   def destroy

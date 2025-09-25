@@ -5,9 +5,15 @@
   <h2>Store info</h2>
     <div class= store_name></div>
 
-  <%# 店舗情報編集ボタン %>
+  <%# 店舗情報編集ボタン #%>
 
   <h2>新規投稿<h2>
+    <%= form_with model: @post_image do |f| %>
+      <%= f.text_area :caption %>
+      <h6>投稿画像</h6>
+      <%= f.file_field :image, accept: "image/*" %>
+      <%= f.submit '投稿' %>
+    <% end %>
 
   <h2>投稿一覧<h2>
 
