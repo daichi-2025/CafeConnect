@@ -10,11 +10,13 @@ Rails.application.routes.draw do
     registrations:  'admins/registrations',
     sessions: 'admins/sessions'
   }
-
+ 
+  get 'users/mypage'
   get 'stores/mypage'
   root to: 'homes#top'
   get 'about' => 'homes#about'
   resources :stores
+  resources :users
   resources :store_images, only: [:new, :index, :show, :create, :destroy]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
