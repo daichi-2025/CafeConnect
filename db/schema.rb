@@ -10,7 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2025_09_22_031002) do
+ActiveRecord::Schema.define(version: 2025_09_25_020712) do
+
+  create_table "admins", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "store_images", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
