@@ -9,6 +9,7 @@ class StoresController < ApplicationController
   end
 
   def mypage
+    @post = Post.all
     
   end
 

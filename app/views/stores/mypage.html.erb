@@ -8,16 +8,26 @@
   <%# 店舗情報編集ボタン #%>
 
   <h2>新規投稿<h2>
-    <%= form_with model: @post_image do |f| %>
-      <%= f.text_area :caption %>
+    <%= form_with model: @post, url: stores_mypage_path do |f| %>
+      <%= f.text_area :content %>
       <h6>投稿画像</h6>
       <%= f.file_field :image, accept: "image/*" %>
       <%= f.submit '投稿' %>
     <% end %>
 
+   
   <h2>投稿一覧<h2>
+    <% if @posts.present? %>
+      <% @posts.each do |post| %>
+        <div>
+          <p><%= post.content %></p>
+          <%= image_tag post.image_url %>
+        </div>
+      <% end %>
+    <% else %>
+      <p>投稿はまだありません。</p>
+    <% end %>
 
-  <%# 投稿詳細ボタン %>
-
+    <%# 投稿詳細ボタン #%>
 </main>
 
