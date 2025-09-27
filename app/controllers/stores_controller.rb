@@ -1,4 +1,8 @@
 class StoresController < ApplicationController
+  def new
+    @post = Post.new
+  end
+
   def index
   end
 
@@ -6,11 +10,12 @@ class StoresController < ApplicationController
   end
 
   def create
+    
   end
 
   def mypage
-    @post = Post.all
-    
+    @post = Post.new
+    @posts = Post.all
   end
 
   def destroy

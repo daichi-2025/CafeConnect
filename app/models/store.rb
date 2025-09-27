@@ -5,4 +5,5 @@ class Store < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :store_images, dependent: :destroy
+  has_many :posts, dependent: :destroy
 end
