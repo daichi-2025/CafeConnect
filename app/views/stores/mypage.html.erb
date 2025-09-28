@@ -3,8 +3,22 @@
   <h1>店舗マイページ</h1>
   
   <h2>Store info</h2>
-    <div class= store_name></div>
-
+    <% if store_signed_in? %>
+      <%# if @store.id == current_store.id #%>
+        <table>
+          <tbody>
+            <tr>
+              <th>店舗名</th>
+              <td><%#= @store.store_name #%></td>
+            </tr>
+            <tr>
+              <th>メールアドレス</th>
+              <td><%#= @store.email #%></td>
+            </tr>
+          </tbody>
+        </table>
+      <%# end #%>
+    <% end %>
   <%# 店舗情報編集ボタン #%>
 
   <h2>新規投稿<h2>

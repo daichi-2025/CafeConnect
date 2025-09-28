@@ -7,6 +7,10 @@ class StoresController < ApplicationController
   end
 
   def show
+    @store = Store.find(params[:id])
+    @store_name = @store.store_name
+    @store_images = @store.store_images
+
   end
 
   def create
