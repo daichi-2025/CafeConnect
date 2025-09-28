@@ -1,2 +1,13 @@
-<h1>Stores#edit</h1>
-<p>Find me in app/views/stores/edit.html.erb</p>
+<h1>店舗情報編集画面</h1>
+
+<%= form_with model: @store, url: store_path(@store.id), method: :patch do |f| %>
+
+  <h4>店舗名</h4>
+  <%= f.text_field :store_name %>
+  
+  <h4>店舗メールアドレス</h4>
+  <%= f.text_field :email %>
+  
+  <%= f.submit '保存' %>
+  
+<% end %>

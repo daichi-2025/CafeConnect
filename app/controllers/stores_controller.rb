@@ -1,5 +1,6 @@
 class StoresController < ApplicationController
   def new
+    @store = Store.new
     @post = Post.new
   end
 
@@ -26,8 +27,16 @@ class StoresController < ApplicationController
   end
 
   def update
+    store = Store.find(params[:id])
+    store.update(store_params)
+    redirect_to stores_mypage_path(store.id)  
   end
 
   def edit
+    @store = Store.find(params[:id])
+  end
+
+  def store_params
+    params.require(:store).permit(:store_name, :email)
   end
 end

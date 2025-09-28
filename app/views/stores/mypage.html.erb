@@ -2,7 +2,7 @@
 <main>
   <h1>店舗マイページ</h1>
   
-  <h2>Store info</h2>
+  <h2>店舗情報</h2>
     <% if store_signed_in? %>
       <%# if @store.id == current_store.id #%>
         <table>
@@ -17,9 +17,10 @@
             </tr>
           </tbody>
         </table>
-      <%# end #%>
-    <% end %>
-  <%# 店舗情報編集ボタン #%>
+      <% end %>
+    <%# end #%>
+
+  <%#= link_to "編集", edit_store_path(@store.id) #%>
 
   <h2>新規投稿<h2>
     <%= form_with model: @post do |f| %>
