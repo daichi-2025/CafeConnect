@@ -1,2 +1,11 @@
 <h1>投稿詳細</h1>
-<p>Find me in app/views/posts/show.html.erb</p>
+  <h2>タイトル</h2>
+  <p><%= @post.title %></p>
+
+  <h2>本文</h2>
+  <p><%= @post.body %></p>
+
+  <h2>投稿画像</h2>
+  <p><%= image_tag @post.post_image, size: "50x50" %></p>
+
+  <%= link_to "編集", edit_post_path(@post.id) %>

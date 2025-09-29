@@ -4,18 +4,18 @@
   
   <h2>店舗情報</h2>
     <% if store_signed_in? %>
-        <table>
-          <tbody>
-            <tr>
-              <th>店舗名</th>
-              <td><%= @store.store_name %></td>
-            </tr>
-            <tr>
-              <th>メールアドレス</th>
-              <td><%= @store.email %></td>
-            </tr>
-          </tbody>
-        </table>
+      <table>
+        <tbody>
+          <tr>
+            <th>店舗名</th>
+            <td><%= @store.store_name %></td>
+          </tr>
+          <tr>
+            <th>メールアドレス</th>
+            <td><%= @store.email %></td>
+          </tr>
+        </tbody>
+      </table>
     <% end %>
 
   <%= link_to "編集", edit_store_path(@store.id) %>
@@ -24,7 +24,7 @@
     <%= form_with model: @post do |f| %>
       <h6>タイトル</h6>
       <%= f.text_field :title %>
-      <h6>内容</h6>
+      <h6>本文</h6>
       <%= f.text_area :body %>
       <h6>投稿画像</h6>
       <%= f.file_field :post_image, accept: "image/*" %>
