@@ -20,7 +20,9 @@ class StoresController < ApplicationController
 
   def mypage
     @post = Post.new
+    # @post = Post.find(params[:id])
     @posts = Post.all
+    @store = Store.find(current_store.id)
   end
 
   def destroy

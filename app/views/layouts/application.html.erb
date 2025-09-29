@@ -14,7 +14,7 @@
     <header>
       <% if store_signed_in? %>
         <li>
-          <%= link_to '店舗マイページ', new_store_image_path %>
+          <%= link_to '店舗マイページ', stores_mypage_path %>
         </li>
         <li>
           <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
