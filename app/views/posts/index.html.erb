@@ -1,2 +1,20 @@
-<h1>Posts#index</h1>
-<p>Find me in app/views/posts/index.html.erb</p>
+<h1>Topページ</h1>
+  
+<h2>このサイトについて</h2>
+<p>気になるカフェを調べたり、いいねやコメントができるレビューサイト。</p>
+
+<h2>店舗投稿一覧</h2>
+  <% @posts.each do |post| %>
+
+    <p>タイトル</p>
+    <span><%= post.title %></span>
+    <p>本文</p>
+    <span><%= post.body %></span>
+    <p>画像</p>
+    <% if post.post_image.attached? %>
+      <%= image_tag post.post_image, size: "100x100" %>
+    <% end %>
+
+  <% end %>
+
+<%# 店舗詳細ボタン %>

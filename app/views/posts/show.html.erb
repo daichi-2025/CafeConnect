@@ -6,6 +6,8 @@
   <p><%= @post.body %></p>
 
   <h2>投稿画像</h2>
-  <p><%= image_tag @post.post_image, size: "50x50" %></p>
-
+  <% if @post.post_image.attached? %>
+    <%= image_tag @post.post_image, size: "50x50" %>
+  <% end %>
+  
   <%= link_to "編集", edit_post_path(@post.id) %>
