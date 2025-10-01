@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   resources :stores
   resources :users
   resources :store_images, only: [:new, :index, :show, :create, :destroy]
-  resources :posts
+  resources :posts do
+    resources :post_comments, only: [:create]
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

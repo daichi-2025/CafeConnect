@@ -8,7 +8,7 @@
         <tbody>
           <tr>
             <td>
-              <% if @store.store_images.attached? %>
+              <% if @store.store_image.attached? %>
                 <%= image_tag @store.store_image, size: "200x200" %>
               <% else %>
                 <%= image_tag 'no_image', size: "200x200" %>
