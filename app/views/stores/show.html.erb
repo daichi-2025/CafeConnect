@@ -1,2 +1,30 @@
-<h1>Stores#show</h1>
-<p>Find me in app/views/stores/show.html.erb</p>
+<h1>店舗詳細</h1>
+
+<table>
+  <tbody>
+    <tr>
+      <th>店舗名</th>
+      <td><%= @store.store_name %></td>
+    </tr>
+    <tr>
+      <th>メールアドレス</th>
+      <td><%= @store.email %></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>投稿一覧<h2>
+  <% if @posts.present? %>
+    <% @posts.each do |post| %>
+      <div>
+        <p><%= post.title %></p>
+        <p><%= post.body %></p>
+        <% if post.post_image.attached? %>
+          <%= image_tag post.post_image, size: "50x50" %>
+        <% end %>
+      </div>
+      <%#= link_to "投稿詳細", post_path(post.id) #%>
+    <% end %>
+  <% else %>
+    <p>投稿はまだありません。</p>
+  <% end %>

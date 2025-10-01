@@ -7,6 +7,15 @@
       <table>
         <tbody>
           <tr>
+            <td>
+              <% if @store.store_images.attached? %>
+                <%= image_tag @store.store_image, size: "200x200" %>
+              <% else %>
+                <%= image_tag 'no_image', size: "200x200" %>
+              <% end %>
+            </td>
+          </tr>
+          <tr>
             <th>店舗名</th>
             <td><%= @store.store_name %></td>
           </tr>

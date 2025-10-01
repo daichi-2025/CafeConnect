@@ -11,7 +11,8 @@ class StoresController < ApplicationController
     @store = Store.find(params[:id])
     @store_name = @store.store_name
     @store_images = @store.store_images
-
+    @post = Post.new
+    @posts = Post.all
   end
 
   def create
@@ -20,7 +21,6 @@ class StoresController < ApplicationController
 
   def mypage
     @post = Post.new
-    # @post = Post.find(params[:id])
     @posts = Post.all
     @store = Store.find(current_store.id)
   end
