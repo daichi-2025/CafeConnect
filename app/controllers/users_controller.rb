@@ -9,6 +9,7 @@ class UsersController < ApplicationController
   end
 
   def mypage
+    @user = user.find(current_user.id)
   end
 
   def destroy

@@ -1,6 +1,33 @@
 <main>
   <h1>ユーザー登録情報</h1>
 
-  <%# 編集ボタン クーポンリンク 退会ボタン%>
+  <h2>ユーザー情報</h2>
+    <% if user_signed_in? %>
+      <table>
+        <tbody>
+          <tr>
+            <td>
+              <%# if store.store_image.attached? #%>
+                <%#= image_tag store.store_image, size: "100x100" #%>
+              <%# else #%>
+                <%= image_tag 'no_image', size: "100x100" %>
+              <%# end #%>
+            </td>
+          </tr>
+          <tr>
+            <th>ユーザー名</th>
+            <td><%= @user.user_name %></td>
+          </tr>
+          <tr>
+            <th>メールアドレス</th>
+            <td><%= @suser.email %></td>
+          </tr>
+        </tbody>
+      </table>
+    <% end %>
+
+  <%= link_to "編集", edit_user_path(@user.id) %>
+
+  <%# クーポンリンク 退会ボタン%>
 
 </main>
