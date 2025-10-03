@@ -8,11 +8,11 @@
         <tbody>
           <tr>
             <td>
-              <% if @store.store_image.attached? %>
-                <%= image_tag @store.store_image, size: "200x200" %>
-              <% else %>
-                <%= image_tag 'no_image', size: "200x200" %>
-              <% end %>
+              <%# if store.store_image.attached? #%>
+                <%#= image_tag store.store_image, size: "100x100" #%>
+              <%# else #%>
+                <%= image_tag 'no_image', size: "100x100" %>
+              <%# end #%>
             </td>
           </tr>
           <tr>
@@ -39,7 +39,6 @@
       <%= f.file_field :post_image, accept: "image/*" %>
       <%= f.submit '投稿' %>
     <% end %>
-
    
   <h2>投稿一覧<h2>
     <% if @posts.present? %>

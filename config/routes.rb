@@ -13,7 +13,8 @@ Rails.application.routes.draw do
  
   get 'users/mypage'
   get 'stores/mypage'
-  root to: 'homes#top'
+  get 'top' => 'homes#top'
+  root to: 'posts#index'
   get 'about' => 'homes#about'
   resources :stores
   resources :users

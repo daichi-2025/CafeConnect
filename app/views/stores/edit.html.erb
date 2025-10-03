@@ -2,6 +2,9 @@
 
 <%= form_with model: @store, url: store_path(@store.id), method: :patch do |f| %>
 
+  <h4>画像</h4>
+  <%= f.file_field :store_image, accept: "image/*" %>
+
   <h4>店舗名</h4>
   <%= f.text_field :store_name %>
   

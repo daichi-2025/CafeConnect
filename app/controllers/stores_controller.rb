@@ -21,7 +21,7 @@ class StoresController < ApplicationController
 
   def mypage
     @post = Post.new
-    @posts = Post.all
+    @posts = current_store.posts.order(created_at: :desc)
     @store = Store.find(current_store.id)
   end
 
@@ -39,6 +39,6 @@ class StoresController < ApplicationController
   end
 
   def store_params
-    params.require(:store).permit(:store_name, :email)
+    params.require(:store).permit(:store_image, :store_name, :email)
   end
 end

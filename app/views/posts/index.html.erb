@@ -15,6 +15,8 @@
       <%= image_tag post.post_image, size: "100x100" %>
     <% end %>
 
+    <%= link_to "店舗詳細", store_path(post.id)%>
+
   <% end %>
 
 <%# 店舗詳細ボタン %>
