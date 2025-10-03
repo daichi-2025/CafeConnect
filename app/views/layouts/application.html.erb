@@ -25,6 +25,19 @@
         </li>
         <li>
           <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+      <% elsif user_signed_in? %>
+        <h3>CafeConnect</h3>
+        <li>
+          <%= link_to '店舗投稿一覧', posts_path %>
+        </li>
+        <li>
+          <%= link_to '店舗一覧', stores_path %>
+        </li>
+        <li>
+          <%= link_to 'ユーザーマイページ', users_mypage_path %>
+        </li>
+        <li>
+          <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
         </li>
       <% else %>
         <h3>CafeConnect</h3>
