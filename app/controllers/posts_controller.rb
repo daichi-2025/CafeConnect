@@ -23,7 +23,10 @@ class PostsController < ApplicationController
     redirect_to stores_mypage_path(post.id)  
   end
 
-  def destory
+  def destroy
+    post = Post.find(params[:id])  
+    post.destroy  
+    redirect_to stores_mypage_path
   end
 
   private
