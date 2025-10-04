@@ -5,6 +5,7 @@ class StoresController < ApplicationController
   end
 
   def index
+    @stores = Store.all.order(created_at: :desc)
   end
 
   def show
@@ -12,7 +13,7 @@ class StoresController < ApplicationController
     @store_name = @store.store_name
     @store_images = @store.store_images
     @post = Post.new
-    @posts = Post.all.order(created_at: :desc)
+    @posts = @store.posts.order(created_at: :desc)
   end
 
   def create

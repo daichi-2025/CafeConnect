@@ -1,3 +1,14 @@
 <h2>店舗一覧</h2>
 
-<%# 店舗詳細ボタン %>
+<% @stores.each do |store| %>
+
+  <p>画像</p>
+  <% if store.store_image.attached? %>
+    <%= image_tag store.store_image, size: "100x100" %>
+  <% end %>
+
+  <span><%= store.store_name %></span>
+
+  <%= link_to "店舗詳細", store_path(store.id)%>
+
+<% end %>

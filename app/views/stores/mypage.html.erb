@@ -8,11 +8,11 @@
         <tbody>
           <tr>
             <td>
-              <%# if store.store_image.attached? #%>
-                <%#= image_tag store.store_image, size: "100x100" #%>
-              <%# else #%>
+              <% if @store.store_image.attached? %>
+                <%= image_tag @store.store_image, size: "100x100" %>
+              <% else %>
                 <%= image_tag 'no_image', size: "100x100" %>
-              <%# end #%>
+              <% end %>
             </td>
           </tr>
           <tr>
