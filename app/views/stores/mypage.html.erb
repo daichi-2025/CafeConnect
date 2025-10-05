@@ -2,7 +2,6 @@
 <main>
   <h1>店舗マイページ</h1>
   
-  <h2>店舗情報</h2>
     <% if store_signed_in? %>
       <table>
         <tbody>
@@ -26,6 +25,18 @@
           <tr>
             <th>店舗電話番号</th>
             <td><%#= @store.phone_number #%></td>
+          </tr>
+          <tr>
+            <th>住所</th>
+            <td><%#= @store.address #%></td>
+          </tr>
+          <tr>
+            <th>店舗URL</th>
+            <td><%#= @store.store_url #%></td>
+          </tr>
+          <tr>
+            <th>店舗情報</th>
+            <td><%#= @store.store_info #%></td>
           </tr>
         </tbody>
       </table>
@@ -58,5 +69,6 @@
     <% else %>
       <p>投稿はまだありません。</p>
     <% end %>
+    <p><%#= link_to "#{@post.post_comments.count} コメント",post_path(@post.id) #%></p>
 </main>
 

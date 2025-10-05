@@ -14,7 +14,9 @@
     <% if post.post_image.attached? %>
       <%= image_tag post.post_image, size: "100x100" %>
     <% end %>
+    <p><%= link_to "#{post.post_comments.count} コメント", post_path(post.id) %></p>
 
+    <%= link_to "投稿詳細", post_path(post.id)%>
     <%= link_to "店舗詳細", store_path(post.store.id)%>
 
   <% end %>
