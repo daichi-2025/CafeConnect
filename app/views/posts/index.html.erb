@@ -1,49 +1,36 @@
-<h1>Topページ</h1>
-  
 <h2>このサイトについて</h2>
 <p>気になるカフェを調べたり、いいねやコメントができるレビューサイト。</p>
 
 <h2>店舗投稿一覧</h2>
 
-  # <% @posts.each do |post| %>
-
-  #   <p>タイトル</p>
-  #   <span><%= post.title %></span>
-  #   <p>本文</p>
-  #   <span><%= post.body %></span>
-  #   <p>画像</p>
-  #   <% if post.post_image.attached? %>
-  #     <%= image_tag post.post_image, size: "100x100" %>
-  #   <% end %>
-  #   <p><%= link_to "#{post.post_comments.count} コメント", post_path(post.id) %></p>
-
-  #   <%= link_to "店舗詳細", store_path(post.store.id)%>
-
-  # <% end %>
-
-  <% @posts.each do |post| %>
-    <div class="card w-50 mx-auto mt-4 shadow-lg">
-      <% if post.post_image.attached? %>
-        <%#= image_tag post.post_image, size: "30x30" #%>
-        <%= image_tag post.post_image, class: "card-img-top"; %>
-      <% end %>
-      <div class="card-body">
-        <div class="row">
-          <div class="col-2">
-            <%= image_tag post.store.get_store_image(100,100), class: "mt-3 rounded-circle"; %>
-          </div>
-          <div class="col-10">
-            <p class="card-title">
-              <%= link_to(post_path(post.id), class: "text-dark") do %>
-                <strong><i class="far fa-flag"></i><span> <%= post.store.store_name %></span></strong>
+  <% @posts.each do |post| %>  
+    <div class="card-list-container py-5">
+      <div class="card w-50 mx-auto mt-4 shadow-lg">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-10">
+              <p class="card-text">タイトル：<%= post.title %></p>
+              <p class="card-text">本文：<%= post.body %></p>
+            </div>
+            <div class="col-2">
+              <% if post.post_image.attached? %>
+                <%#= image_tag post.post_image, size: "20x20" #%>
+                <%= image_tag post.post_image, class: "card-img-top"; %>
               <% end %>
-            </p>
-            <p class="card-text">タイトル：<%= post.title %></p>
-            <p class="card-text">本文：<%= post.body %></p>
-            
-            <span><%= link_to "#{post.post_comments.count} コメント", post_path(post.id), class: "text-dark" %></span>
-            <span><%= link_to "店舗詳細", store_path(post.store.id), class: "text-dark"%></span>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-2">
+              <%= image_tag post.store.get_store_image(80,80), class: "mt-3 rounded-circle"; %>
+            </div>
+            <div class="col-10">
+              <p class="card-title">
+              <%= link_to(store_path(post.store.id), class: "text-dark") do %>
+                <strong><i class="far fa-flag"></i><span><%= post.store.store_name %></span></strong>
+              <% end %>
+              <span>  |  <%= link_to "#{post.post_comments.count} コメント", post_path(post.id), class: "text-dark" %></span>
+            </div>
           </div>
         </div>
-      </div>
+    </div>
   <% end %>

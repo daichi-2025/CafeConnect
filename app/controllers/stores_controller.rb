@@ -11,7 +11,7 @@ class StoresController < ApplicationController
   def show
     @store = Store.find(params[:id])
     @store_name = @store.store_name
-    @store_images = @store.store_images
+    @store_image = @store.store_image
     @post = Post.new
     @posts = @store.posts.order(created_at: :desc)
   end
