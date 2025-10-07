@@ -10,8 +10,11 @@ class PostsController < ApplicationController
 
   def create
     post = current_store.posts.new(post_params)
-    post.save
-    redirect_to stores_mypage_path
+    if post.save
+      redirect_to posts_path
+    else
+      render :new
+    end
   end
 
   def edit
