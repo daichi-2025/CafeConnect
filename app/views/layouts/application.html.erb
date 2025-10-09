@@ -68,7 +68,11 @@
     </header>
 
     <main class="mb-auto">
-      <%= yield %>
+      <div>
+        <%= flash[:notice] %>
+        <%= flash[:alert] %>
+      </div>
+        <%= yield %>
     </main>
 
     <footer class="bg-dark text-white pt-5 pb-4">

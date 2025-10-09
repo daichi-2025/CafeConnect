@@ -9,11 +9,13 @@ class PostsController < ApplicationController
   end
 
   def create
-    post = current_store.posts.new(post_params)
-    if post.save
+    @post = current_store.posts.new(post_params)
+    if @post.save
       redirect_to posts_path
     else
-      render :new
+      @posts = current_store.posts.order(created_at: :desc)
+      @store = Store.find(current_store.id)
+      render "stores/mypage"
     end
   end
 
@@ -22,9 +24,13 @@ class PostsController < ApplicationController
   end
 
   def update
-    post = Post.find(params[:id])
-    post.update(post_params)
-    redirect_to stores_mypage_path(post.id)  
+    @post = Post.find(params[:id])
+    if @post.update(post_params)
+      redirect_to stores_mypage_path(@post.id)  
+    else
+      @post = Post.find(@post.id)
+      render "posts/edit"
+    end
   end
 
   def destroy
