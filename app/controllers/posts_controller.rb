@@ -28,7 +28,6 @@ class PostsController < ApplicationController
     if @post.update(post_params)
       redirect_to stores_mypage_path(@post.id)  
     else
-      @post = Post.find(@post.id)
       render "posts/edit"
     end
   end

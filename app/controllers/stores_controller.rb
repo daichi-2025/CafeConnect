@@ -26,6 +26,9 @@ class StoresController < ApplicationController
   end
 
   def destroy
+    store = Store.find(current_store.id)  
+    store.destroy  
+    redirect_to new_store_registration_path
   end
 
   def update
