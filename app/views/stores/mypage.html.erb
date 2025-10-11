@@ -28,10 +28,11 @@
               <p class="card-text">店舗情報：<%= @store.store_info %></p>
             </div>
             <div class="row mt-4">
-              <%= link_to "編集", edit_store_path(@store.id) %>
-            </div>
-            <div class="row mt-4">
-              <%= link_to "退会", store_path(@store.id), method: :delete, "data-confirm" => "本当に退会しますか？" %>
+              <div class="col-10"></div>
+              <div class="col-2">
+                <%= link_to "編集", edit_store_path(@store.id) %>
+                <%= link_to "退会", store_path(@store.id), method: :delete, "data-confirm" => "本当に退会しますか？" %>
+              </div>
             </div>
           </div>
         </div>
@@ -41,7 +42,7 @@
   
   <div class="container">
     <div class="row no-gutters">
-      <div class="col-md-5 col-sm-10 mx-2 mx-sm-auto shadow-lg rounded px-0 my-5">
+      <div class="col-md-8 col-sm-10 mx-2 mx-sm-auto shadow-lg rounded px-0 my-5 text-center">
         <h5 class="text-dark bg-light p-4 mb-0">新規投稿フォーム</h5>
         <div class="form-body p-4">
           <% if @post.errors.any? %>
