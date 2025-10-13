@@ -1,10 +1,9 @@
 
 <main>
-  <h1>店舗マイページ</h1>
-  
+  <div class="container d-flex justify-content-center mt-4">
+    <h2>店舗マイページ</h2>
+  </div>
     <% if store_signed_in? %>
-
-
       <div class="card-list-container py-5">
         <div class="card w-50 mx-auto mt-4 mb-4 shadow-lg">
           <div class="card-body">
@@ -38,8 +37,6 @@
         </div>
       <% end %>
 
-      
-  
   <div class="container">
     <div class="row no-gutters">
       <div class="col-md-8 col-sm-10 mx-2 mx-sm-auto shadow-lg rounded px-0 my-5 text-center">
@@ -71,11 +68,13 @@
       </div>
     </div>
   </div>
-   
-  <h2>投稿一覧<h2>
+  
+  <div class="container d-flex justify-content-center mt-4">
+    <h2>投稿一覧</h2>
+  </div>
     <% if @posts.present? %>
       <% @posts.each do |post| %>  
-        <div class="card-list-container py-5">
+        <div class="card-list-container py-1">
           <div class="card w-50 mx-auto mt-4 shadow-lg">
             <div class="card-body">
               <div class="row">
@@ -106,6 +105,5 @@
     <% else %>
       <p>投稿はまだありません。</p>
     <% end %>
-
 </main>
 

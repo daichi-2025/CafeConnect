@@ -1,33 +1,34 @@
 <main>
-  <h1>ユーザー登録情報</h1>
+  <div class="container d-flex justify-content-center mt-4">
+    <h2>ユーザーマイページ</h2>
+  </div>
 
-  <h2>ユーザー情報</h2>
-    <% if user_signed_in? %>
-      <table>
-        <tbody>
-          <tr>
-            <td>
+  <% if user_signed_in? %>
+    <div class="card-list-container py-5">
+      <div class="card w-50 mx-auto mt-4 mb-4 shadow-lg">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-4">
               <% if @user.user_image.attached? %>
-                <%= image_tag @user.user_image, size: "100x100" %>
+                <%= image_tag @user.user_image, size: "150x150" %>
               <% else %>
-                <%= image_tag 'no_image', size: "100x100" %>
+                <%= image_tag 'no_image', size: "150x150" %>
               <% end %>
-            </td>
-          </tr>
-          <tr>
-            <th>ユーザー名</th>
-            <td><%= @user.name %></td>
-          </tr>
-          <tr>
-            <th>メールアドレス</th>
-            <td><%= @user.email %></td>
-          </tr>
-        </tbody>
-      </table>
-    <% end %>
-
-  <%= link_to "編集", edit_user_path(@user.id) %>
-
-  <%= link_to "退会", user_path(@user.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
-
+            </div>    
+            <div class="col-8">
+              <p class="card-text">ユーザー名：<%= @user.name %></p>
+              <p class="card-text">メールアドレス：<%= @user.email %></p>
+            </div>
+          </div>
+          <div class="row mt-4">
+            <div class="col-10"></div>
+            <div class="col-2">
+              <%= link_to "編集", edit_user_path(@user.id) %>
+              <%= link_to "退会", user_path(@user.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
 </main>

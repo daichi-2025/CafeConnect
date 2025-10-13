@@ -1,28 +1,65 @@
-<h1>店舗情報編集画面</h1>
+<div class="container">
+  <div class="row no-gutters">
+    <div class="col-md-8 col-sm-10 mx-2 mx-sm-auto shadow-lg rounded px-0 my-5 text-center">
+      <h5 class="text-dark bg-light p-4 mb-0">店舗情報編集フォーム</h5>
+      <div class="form-body p-4">
+        <% if @store.errors.any? %>
+          <ul class="alert alert-danger" role="alert">
+            <h6 class="alert-heading">
+              <%= @store.errors.count %>件のエラーが発生しました
+            </h6>
+            <% @store.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        <% end %>
+        <%= form_with model: @store, url: store_path(@store.id), method: :patch do |f| %>
+          <div class="row">
+            <div class="col-3">
+              <% if @store.store_image.attached? %>
+                <%= image_tag @store.store_image, size: "150x150" %>
+              <% end %>
+            </div>
+            <div class="col-9">
+              <%= f.file_field :store_image, accept: "image/*", class: "w-100" %>
+            </div>
+          </div>
+          <div class="input-group mb-3 mt-4">
+            <div class="input-group-prepend">
+              <span class="input-group-text" aria-hidden="true"></span>
+            </div>
+            <%= f.text_field :store_name, class: "form-control", placeholder: "店舗名" %>
+          </div>
+          <div class="input-group mb-3 mt-4">
+            <div class="input-group-prepend">
+              <span class="input-group-text" aria-hidden="true"></span>
+            </div>
+            <%= f.text_field :email, class: "form-control", placeholder: "店舗メールアドレス" %>
+          </div>
+          <div class="input-group mb-3 mt-4">
+            <div class="input-group-prepend">
+              <span class="input-group-text" aria-hidden="true"></span>
+            </div>
+            <%= f.text_field :phone_number, class: "form-control", placeholder: "店舗電話番号" %>
+          </div>
+          <div class="input-group mb-3 mt-4">
+            <div class="input-group-prepend">
+              <span class="input-group-text" aria-hidden="true"></span>
+            </div>
+            <%= f.text_field :address, class: "form-control", placeholder: "住所" %>
+          </div>
+          <div class="input-group mb-3 mt-4">
+            <div class="input-group-prepend">
+              <span class="input-group-text" aria-hidden="true"></span>
+            </div>
+            <%= f.text_field :store_url, class: "form-control", placeholder: "店舗URL" %>
+          </div>
+          <%= f.text_area :store_info, class: "form-control", rows: "5", placeholder: "店舗情報" %>
+          
 
-<%= form_with model: @store, url: store_path(@store.id), method: :patch do |f| %>
-
-  <h4>画像</h4>
-  <%= f.file_field :store_image, accept: "image/*" %>
-
-  <h4>店舗名</h4>
-  <%= f.text_field :store_name %>
-  
-  <h4>店舗メールアドレス</h4>
-  <%= f.text_field :email %>
-
-  <h4>店舗電話番号</h4>
-  <%= f.text_field :phone_number %>
-
-  <h4>住所</h4>
-  <%= f.text_field :address %>
-
-  <h4>店舗URL</h4>
-  <%= f.text_field :store_url %>
-
-  <h4>店舗情報</h4>
-  <%= f.text_area :store_info %>
-  
-  <%= f.submit '保存' %>
-  
-<% end %>
+          <%= f.submit '保存', class: "btn btn-lg btn-block btn-info mt-4" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
