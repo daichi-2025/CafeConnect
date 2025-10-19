@@ -33,8 +33,12 @@ class StoresController < ApplicationController
 
   def update
     store = Store.find(params[:id])
-    store.update(store_params)
-    redirect_to stores_mypage_path(store.id)  
+    if store.update(store_params)
+      redirect_to stores_mypage_path(store.id)  
+    else
+      @store = Store.find(current_store.id)
+      render "stores/edit"
+    end
   end
 
   def edit

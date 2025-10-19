@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   get 'top' => 'homes#top'
   root to: 'posts#index'
   get 'about' => 'homes#about'
+  get "search" => "searches#search"
   resources :stores
   resources :users
   resources :store_images, only: [:new, :index, :show, :create, :destroy]

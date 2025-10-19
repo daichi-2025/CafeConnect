@@ -10,6 +10,32 @@ class Store < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_one_attached :store_image
 
+  # def self.looks(search, word)
+  #   if search == "perfect_match"
+  #     @store = Store.where("title LIKE?","#{word}")
+  #   elsif search == "forward_match"
+  #     @store = Store.where("title LIKE?","#{word}%")
+  #   elsif search == "backward_match"
+  #     @store = Store.where("title LIKE?","%#{word}")
+  #   elsif search == "partial_match"
+  #     @store = Store.where("title LIKE?","%#{word}%")
+  #   else
+  #     @store = Store.all
+  #   end
+  # end
+
+  def self.search_for(content, method)
+    if method == 'perfect'
+      Book.where(title: content)
+    elsif method == 'forward'
+      Book.where('name LIKE ?', content + '%')
+    elsif method == 'backward'
+      Book.where('name LIKE ?', '%' + content)
+    else
+      Book.where('name LIKE ?', '%' + content + '%')
+    end
+  end
+
   def get_store_image(width, height)
     unless store_image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')
