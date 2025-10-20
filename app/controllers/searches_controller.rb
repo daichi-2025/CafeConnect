@@ -10,7 +10,8 @@ class SearchesController < ApplicationController
     if @model  == "user"
       @records = User.search_for(@content, @method)
     else
-      @records = Stores.search_for(@content, @method)
+      @records = Store.search_for(@content, @method)
     end
+      render :search_result
   end
 end
