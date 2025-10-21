@@ -17,7 +17,9 @@ Rails.application.routes.draw do
   root to: 'posts#index'
   get 'about' => 'homes#about'
   get "search" => "searches#search"
-  resources :stores
+  resources :stores do
+    resource :favorites, only: [:create, :destroy]
+  end
   resources :users
   resources :store_images, only: [:new, :index, :show, :create, :destroy]
   resources :posts do

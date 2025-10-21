@@ -5,24 +5,10 @@ class Store < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :store_name, presence: true
-
   
   has_many :posts, dependent: :destroy
   has_one_attached :store_image
-
-  # def self.looks(search, word)
-  #   if search == "perfect_match"
-  #     @store = Store.where("title LIKE?","#{word}")
-  #   elsif search == "forward_match"
-  #     @store = Store.where("title LIKE?","#{word}%")
-  #   elsif search == "backward_match"
-  #     @store = Store.where("title LIKE?","%#{word}")
-  #   elsif search == "partial_match"
-  #     @store = Store.where("title LIKE?","%#{word}%")
-  #   else
-  #     @store = Store.all
-  #   end
-  # end
+  has_many :favorites, dependent: :destroy
 
   def self.search_for(content, method)
     if method == 'perfect'
@@ -42,5 +28,9 @@ class Store < ApplicationRecord
       store_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
     end
     store_image.variant(resize_to_limit: [width, height]).processed
+  end
+
+  def favorited_by?(user)
+    favorites.exists?(user_id: user.id)
   end
 end

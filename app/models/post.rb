@@ -6,4 +6,5 @@ class Post < ApplicationRecord
   validates :title, presence: true
   validates :body, presence: true
   #validates :post_image, presence: true
+
 end

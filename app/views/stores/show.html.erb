@@ -10,6 +10,9 @@
       <th>メールアドレス</th>
       <td><%= @store.email %></td>
     </tr>
+    <tr>
+      <td><%= render "favorites/btn", store: @store %></td>
+    </tr>
   </tbody>
 </table>
 
