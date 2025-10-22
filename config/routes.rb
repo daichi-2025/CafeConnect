@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   resources :store_images, only: [:new, :index, :show, :create, :destroy]
   resources :posts do
     resources :post_comments, only: [:create]
+    resource :likes, only: [:create, :destroy]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

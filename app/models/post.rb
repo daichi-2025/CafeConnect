@@ -7,4 +7,9 @@ class Post < ApplicationRecord
   validates :body, presence: true
   #validates :post_image, presence: true
 
+  has_many :likes, dependent: :destroy
+
+  def liked_by?(user)
+    likes.exists?(user_id: user.id)
+  end
 end

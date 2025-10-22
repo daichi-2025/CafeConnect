@@ -27,6 +27,9 @@
           </span>
         </div>
       </div>
+      <div class= "row">
+        <%= render "likes/btn", post: @post %>
+      </div>
       <div class="row mt-4">
         <%= form_with model: [@post, @post_comment] do |f| %>
           <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>

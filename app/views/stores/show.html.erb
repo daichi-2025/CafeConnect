@@ -1,33 +1,66 @@
-<h1>店舗詳細</h1>
-
-<table>
-  <tbody>
-    <tr>
-      <th>店舗名</th>
-      <td><%= @store.store_name %></td>
-    </tr>
-    <tr>
-      <th>メールアドレス</th>
-      <td><%= @store.email %></td>
-    </tr>
-    <tr>
-      <td><%= render "favorites/btn", store: @store %></td>
-    </tr>
-  </tbody>
-</table>
-
-<h2>投稿一覧<h2>
-  <% if @posts.present? %>
-    <% @posts.each do |post| %>
-      <div>
-        <p><%= post.title %></p>
-        <p><%= post.body %></p>
-        <% if post.post_image.attached? %>
-          <%= image_tag post.post_image, size: "50x50" %>
-        <% end %>
+<main>
+  <div class="container d-flex justify-content-center mt-4">
+    <h2>店舗詳細</h2>
+  </div>
+  <div class="card-list-container py-5">
+    <div class="card w-50 mx-auto mt-4 mb-4 shadow-lg">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-4">
+            <% if @store.store_image.attached? %>
+              <%= image_tag @store.store_image, size: "200x200" %>
+            <% else %>
+              <%= image_tag 'no_image', size: "150x150" %>
+            <% end %>
+          </div>    
+          <div class="col-8">
+            <p class="card-text">店舗名：<%= @store.store_name %></p>
+            <p class="card-text">メールアドレス：<%= @store.email %></p>
+            <p class="card-text">店舗電話番号：<%= @store.phone_number %></p>
+            <p class="card-text">住所：<%= @store.address %></p>
+            <p class="card-text">店舗URL：<%= @store.store_url %></p>
+          </div>
+        </div>
+        <div class="row mt-4">
+          <p class="card-text">店舗情報：<%= @store.store_info %></p>
+        </div>
+          <div class="row justify-content-end mt-2 mr-2">
+            <%= render "favorites/btn", store: @store %>
+          </div>
+        </div>
       </div>
-      <%#= link_to "投稿詳細", post_path(post.id) #%>
+    </div>
+  </div>
+
+  <div class="container d-flex justify-content-center mt-4">
+    <h2>投稿一覧</h2>
+  </div>
+    <% if @posts.present? %>
+      <% @posts.each do |post| %>  
+        <div class="card-list-container py-1">
+          <div class="card w-50 mx-auto mt-4 shadow-lg">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-10">
+                  <p class="card-text">タイトル：<%= post.title %></p>
+                  <p class="card-text">本文：<%= post.body %></p>
+                </div>
+                <div class="col-2">
+                  <% if post.post_image.attached? %>
+                    <%#= image_tag post.post_image, size: "20x20" #%>
+                    <%= image_tag post.post_image, class: "card-img-top"; %>
+                  <% end %>
+                </div>
+              </div>
+              <div class="row justify-content-end mt-4 mr-2">
+                <%= link_to "投稿詳細", post_path(post.id), class: "text-dark" %>
+              </div>
+            </div>
+          </div>
+        </div>
+     <% end %>
+    <% else %>
+      <p>投稿はまだありません。</p>
     <% end %>
-  <% else %>
-    <p>投稿はまだありません。</p>
-  <% end %>
+</main>
+

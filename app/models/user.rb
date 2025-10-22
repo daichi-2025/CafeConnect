@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :post_comments, dependent: :destroy
   has_one_attached :user_image, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :likes, dependent: :destroy
   
 
   def self.search_for(content, method)
