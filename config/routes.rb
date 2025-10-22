@@ -13,6 +13,7 @@ Rails.application.routes.draw do
  
   get 'users/mypage'
   get 'stores/mypage'
+  get 'admins/mypage'
   get 'top' => 'homes#top'
   root to: 'posts#index'
   get 'about' => 'homes#about'
@@ -26,5 +27,6 @@ Rails.application.routes.draw do
     resources :post_comments, only: [:create]
     resource :likes, only: [:create, :destroy]
   end
+  resources :admins
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
