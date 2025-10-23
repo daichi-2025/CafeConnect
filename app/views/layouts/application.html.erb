@@ -88,10 +88,7 @@
         <%= flash[:notice] %>
         <%= flash[:alert] %>
       </div>
-      <div class="d-flex justify-content-end mt-4 mb-2 mr-4">
-        <%= render "searches/search" %>
-      </div>
-        <%= yield %>
+      <%= yield %>
     </main>
 
     <footer class="bg-dark text-white mt-5 pt-5 pb-4">
