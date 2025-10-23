@@ -5,7 +5,7 @@ class Admin < ApplicationRecord
 #          :recoverable, :rememberable, :validatable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  attr_accessor :email
+  #attr_accessor :email
 
   validates :admin_name, presence: true
   has_one_attached :admin_image
