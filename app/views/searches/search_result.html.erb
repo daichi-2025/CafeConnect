@@ -5,13 +5,22 @@
 
 <table class="table table-hover table-inverse">
   <!--検索対象モデルがUserの時 -->
-  <% if @model == "user" %>
     <tbody>
-      <% @records.each do |user| %>
-        <tr>
-          <td><%= user.name %></td>
-        </tr>
-      <% end %>
+      <% if @records.present? %>
+        <% @records.each do |user| %>
+          <div class="container d-flex justify-content-center mt-4">
+            <h2>店舗検索結果</h2>
+          </div>
+          <div class="card-list-container py-5">
+            <div class="card w-50 mx-auto mt-4 shadow-lg">
+              <div class="card-body">
+                <div class="row">
+                  <%= user.name %></td>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
     </tbody>
   <% else %>
     <!--検索対象モデルがStoreの時 -->

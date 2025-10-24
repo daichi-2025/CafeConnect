@@ -1,4 +1,6 @@
 class StoresController < ApplicationController
+  before_action :is_matching_login_store, only: [:edit, :update]
+
   def new
     @store = Store.new
     @post = Post.new
@@ -48,5 +50,12 @@ class StoresController < ApplicationController
   private
   def store_params
     params.require(:store).permit(:store_image, :store_name, :email, :phone_number, :address, :store_url, :store_info)
+  end
+
+  def is_matching_login_store
+    store = Store.find(params[:id])
+    unless current_store == store
+      redirect_to posts_path, alert: "権限がありません"
+    end
   end
 end

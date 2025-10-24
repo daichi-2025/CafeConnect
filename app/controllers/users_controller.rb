@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  #before_action :is_matching_login_user, only: [:edit, :update]
+  before_action :is_matching_login_user, only: [:edit, :update]
 
   def index
     @users = User.all.order(created_at: :desc)
@@ -35,5 +35,12 @@ class UsersController < ApplicationController
   private
   def user_params
     params.require(:user).permit(:user_image, :name, :email)    
+  end
+
+  def is_matching_login_user
+    user = User.find(params[:id])
+    unless current_user == user
+      redirect_to posts_path, alert: "権限がありません"
+    end
   end
 end
