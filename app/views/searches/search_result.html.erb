@@ -1,15 +1,15 @@
 
-<div class="container d-flex justify-content-center mt-4">
-  <h2>店舗検索結果</h2>
+<div class="d-flex justify-content-end mt-4 mb-2 mr-4">
+  <%= render "searches/search" %>
 </div>
 
 <table class="table table-hover table-inverse">
   <!--検索対象モデルがUserの時 -->
     <tbody>
-      <% if @records.present? %>
+      <% if @records.present? && @model == "user" %>
         <% @records.each do |user| %>
           <div class="container d-flex justify-content-center mt-4">
-            <h2>店舗検索結果</h2>
+            <h2>ユーザー検索結果</h2>
           </div>
           <div class="card-list-container py-5">
             <div class="card w-50 mx-auto mt-4 shadow-lg">
@@ -21,12 +21,13 @@
             </div>
           </div>
         <% end %>
-    </tbody>
-  <% else %>
+      <% else %>
     <!--検索対象モデルがStoreの時 -->
-    <tbody>
       <% if @records.present? %>
         <% @records.each do |store| %>
+          <div class="container d-flex justify-content-center mt-4">
+            <h2>店舗検索結果</h2>
+          </div>
           <div class="card-list-container py-5">
             <div class="card w-50 mx-auto mt-4 shadow-lg">
               <div class="card-body">
