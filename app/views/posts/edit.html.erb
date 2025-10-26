@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row no-gutters">
-    <div class="col-md-5 col-sm-10 mx-2 mx-sm-auto shadow-lg rounded px-0 my-5">
+    <div class="col-md-8 col-sm-10 mx-2 mx-sm-auto shadow-lg rounded px-0 my-5 text-center">
       <h5 class="text-dark bg-light p-4 mb-0">投稿編集フォーム</h5>
       <div class="form-body p-4">
         <% if @post.errors.any? %>
@@ -14,34 +14,33 @@
           </ul>
         <% end %>
         <%= form_with model: @post, url: post_path(@post.id), method: :patch do |f| %>
-
-          <h4>タイトル</h4>
-          <%= f.text_field :title %>
-          
-          <h4>本文</h4>
-          <%= f.text_area :body %>
-
-          <h4>投稿画像</h4>
-          <% if @post.post_image.attached? %>
-            <%= image_tag @post.post_image, size: "50x50" %>
-          <% end %>
-          
-          <%= f.file_field :post_image, accept: "image/*" %>
-          
-          <%= f.submit '更新' %>
-          
+          <div class="input-group mb-3 mt-4">
+            <div class="input-group-prepend">
+              <span class="input-group-text" aria-hidden="true"><i class="fas fa-building"></i></span>
+            </div>
+            <%= f.text_field :title, class: "form-control", placeholder: "タイトル" %>
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" aria-hidden="true"><i class="fa-solid fa-tag"></i></span>
+            </div>
+            <%= f.text_field :category, class: 'form-control post_category', placeholder: "カテゴリー" %>
+          </div>
+          <div class="input-group mb-3">
+            <%= f.text_area :body, class: "form-control", rows: "3", placeholder: "本文" %>
+          </div>
+          <div class="row mb-3">
+            <div class= col-3>
+              <% if @post.post_image.attached? %>
+                <%= image_tag @post.post_image, size: "100x100" %>
+              <% end %>
+            </div>
+            <div class= col-9 d-flex justify-content-end align-items-end>
+              <%= f.file_field :post_image, accept: "image/*", class: "w-100" %>
+            </div>
+          </div>
+          <%= f.submit '更新', class: "btn btn-lg btn-block btn-info mt-4" %>
         <% end %>
-
-        <%# 公開／非公開ボタン #%>
-
-        <div>
-          <p>コメント件数：<%= @post.post_comments.count %></p>
-          <% @post.post_comments.each do |post_comment| %>
-            <p><%= image_tag post_comment.user.get_user_image(50,50) %></p>
-            <%= post_comment.user.name %>
-            <%= post_comment.created_at.strftime('%Y/%m/%d') %><%= post_comment.comment %>
-          <% end %>
-        </div>
       </div>
     </div>
   </div>

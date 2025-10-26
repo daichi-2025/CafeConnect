@@ -99,14 +99,8 @@
                   <% end %>
                 </div>
               </div>
-              <div class="row">
-                <div class="col-8">
-                </div>
-                <div class="col-4">
-                  <p class="card-title">
-                    <%= link_to "投稿詳細", post_path(post.id), class: "text-dark" %>
-                  </p>
-                </div>
+              <div class="row d-flex justify-content-end align-items-end mt-2 mr-2">
+                <%= link_to "投稿詳細", post_path(post.id), class: "text-dark" %>
               </div>
             </div>
           </div>
