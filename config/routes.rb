@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   resources :users
   resources :store_images, only: [:new, :index, :show, :create, :destroy]
   resources :posts do
-    resources :post_comments, only: [:create]
+    resources :post_comments, only: [:create, :destroy]
     resource :likes, only: [:create, :destroy]
   end
   resources :admins
