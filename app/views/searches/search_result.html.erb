@@ -4,29 +4,27 @@
 </div>
 
 <table class="table table-hover table-inverse">
-  <!--検索対象モデルがUserの時 -->
-    <tbody>
-      <% if @records.present? && @model == "user" %>
-        <% @records.each do |user| %>
-          <div class="container d-flex justify-content-center mt-4">
-            <h2>ユーザー検索結果</h2>
-          </div>
-          <div class="card-list-container py-5">
-            <div class="card w-50 mx-auto mt-4 shadow-lg">
-              <div class="card-body">
-                <div class="row">
-                  <%= user.name %></td>
-                </div>
+  <tbody>
+    <% if @records.present? && @model == "user" %>
+      <% @records.each do |user| %>
+        <div class="container d-flex justify-content-center mt-4">
+          <h2>ユーザー検索結果一覧</h2>
+        </div>
+        <div class="card-list-container py-5">
+          <div class="card w-50 mx-auto mt-4 shadow-lg">
+            <div class="card-body">
+              <div class="row">
+                <%= user.name %></td>
               </div>
             </div>
           </div>
-        <% end %>
-      <% else %>
-    <!--検索対象モデルがStoreの時 -->
+        </div>
+      <% end %>
+    <% else %>
       <% if @records.present? %>
         <% @records.each do |store| %>
           <div class="container d-flex justify-content-center mt-4">
-            <h2>店舗検索結果</h2>
+            <h2>店舗検索結果一覧</h2>
           </div>
           <div class="card-list-container py-5">
             <div class="card w-50 mx-auto mt-4 shadow-lg">
@@ -56,6 +54,6 @@
           <p>検索結果がありません</p>
         </div>
       <% end %>
-    </tbody>
-  <% end %>
+    <% end %>
+  </tbody>
 </table>

@@ -5,6 +5,7 @@ class CreatePosts < ActiveRecord::Migration[6.1]
       t.string :title, null: false, default:""
       t.text :body, null: false
       t.text :comment
+      t.string :category
       t.datetime :remember_created_at
       t.timestamps null: false
     end

@@ -81,6 +81,7 @@ ActiveRecord::Schema.define(version: 2025_10_23_023245) do
     t.string "title", default: "", null: false
     t.text "body", null: false
     t.text "comment"
+    t.string "category"
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
