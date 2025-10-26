@@ -5,6 +5,10 @@
     <%= f.select :model, options_for_select({"ユーザー名" => "user", "店舗名" => "store"}) %>
     <%= f.select :method, options_for_select({"完全一致" => "perfect", "前方一致" => "forward", "後方一致" => "backward", "部分一致" => "partial"}) %>
     <%= f.submit "検索" %>
+  <% end %>
+<%# end #%>
+
+
 
     <%#= form_with url: search_path, method: :get, local: true do |f| #%>
       <%#= f.text_field :store_name, placeholder: "店舗名を入力してください" #%>
@@ -12,6 +16,3 @@
       <%#= f.hidden_field :method, value: "perfect" #%>
       <%#= f.submit "検索" %>
     <%# end #%>
-
-  <% end %>
-<%# end #%>
