@@ -25,36 +25,38 @@
   <div class="container d-flex justify-content-center mt-4">
     <h2>コメント一覧</h2>
   </div>
+    <% if @user.post_comments.present? %>
       <div class="card-list-container py-1">
         <div class="card w-50 mx-auto mt-4 shadow-lg">
           <div class="card-body">
             <div class="row">
-              <% if @user.post_comments.present? %>
-                <% @user.post_comments.each do |post_comment| %>
-                  <div class="col-12">
-                    <div class="row ml-2">
-                      <%= post_comment.created_at.strftime('%Y/%m/%d') %>
+              <% @user.post_comments.each do |post_comment| %>
+                <div class="col-12">
+                  <div class="row ml-2">
+                    <%= post_comment.created_at.strftime('%Y/%m/%d') %>
+                  </div>
+                  <div class="row ml-2">
+                    <%= post_comment.comment %>
+                  </div>
+                  <div class="row ml-2 d-flex justify-content-end align-items-end mr-2">
+                    <div class="accept mr-4">
+                      <span>公開中  |  非公開中</span>
                     </div>
-                    <div class="row ml-2">
-                      <%= post_comment.comment %>
-                    </div>
-                    <div class="row ml-2 d-flex justify-content-end align-items-end mr-2">
-                      <div class="accept mr-4">
-                        <span>公開中  |  非公開中</span>
-                      </div>
-                      <div class="post_show mr-2">
-                        <%= link_to "投稿詳細", post_path(@post.id), class: "text-dark" %>
-                      </div>
+                    <div class="post_show mr-2">
+                      <%= link_to "投稿詳細", post_path(@post.id), class: "text-dark" %>
                     </div>
                   </div>
-                <% end %>
-              <% else %>
-                <p>コメントはまだありません。</p>
-              <% end %>  
+                </div>
+              <% end %>
             </div>
           </div>
         </div>
       </div>
+    <% else %>
+      <div class="row d-flex justify-content-center mt-4">
+        <p>コメントはまだありません</p>
+      </div>
+    <% end %>  
   </div>
 </main>
 

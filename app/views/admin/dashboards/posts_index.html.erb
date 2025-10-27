@@ -43,11 +43,10 @@
           </div>
           <div class="row d-flex justify-content-end align-items-end mr-3 mb-3">
             <div class="category mr-4">
-              <span><i class="fa-solid fa-tag"></i>カテゴリー：</span><%= post.category %>
-              <%#=link_to post.category, tagsearches_search_path(content:@post.category) content?→body? controllerの記述も #%>  
+              <span><i class="fa-solid fa-tag"></i>カテゴリー：</span><%= post.category %>  
             </div>
             <div class="comment mr-4">
-              <%= link_to "#{post.post_comments.count} コメント", post_path(post.id), class: "text-dark" %>
+              <%= link_to "#{post.post_comments.count} コメント", admin_posts_show_dashboards_path(post.id), class: "text-dark" %>
             </div>
             <div class="like">
               <%= render "likes/btn", post: post %>

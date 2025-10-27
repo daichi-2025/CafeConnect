@@ -9,10 +9,11 @@ class Store < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_one_attached :store_image
   has_many :favorites, dependent: :destroy
+  has_many :likes, dependent: :destroy
 
   def self.search_for(content, method)
     if method == 'perfect'
-      Store.where(title: content)
+      Store.where(store_name: content)
     elsif method == 'forward'
       Store.where('store_name LIKE ?', content + '%')
     elsif method == 'backward'

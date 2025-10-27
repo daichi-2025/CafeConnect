@@ -14,13 +14,11 @@ class AdminsController < ApplicationController
   end
 
   def mypage
-    @admin = Admin.find(current_admin.id)
+    @admin = current_admin
   end
 
   def destroy
-    admin = Admin.find(current_admin.id)  
-    admin.destroy  
-    redirect_to new_user_registration_path
+    
   end
 
   def update
@@ -29,8 +27,8 @@ class AdminsController < ApplicationController
   def edit
   end
 
-  private
-  def admin_params
-    params.require(:admin).permit(:admin_name, :email)    
-  end
+  # private
+  # def admin_params
+  #   params.require(:admin).permit(:admin_name, :email)    
+  # end
 end

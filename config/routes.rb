@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     get 'stores_dashboards', to: 'dashboards#stores_index'
     get 'posts_dashboards', to: 'dashboards#posts_index'
     get 'mypages_dashboards', to: 'dashboards#mypages'
+    get 'posts_show_dashboards', to: 'dashboards#posts_show'
     resources :users, only: [:destroy] 
   end
  

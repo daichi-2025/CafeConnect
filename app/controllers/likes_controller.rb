@@ -1,15 +1,25 @@
 class LikesController < ApplicationController
   def create
     post = Post.find(params[:post_id])
-    like = current_user.likes.new(post_id: post.id)
-    like.save
+    if current_user
+      like = current_user.likes.new(post_id: post.id)
+      like.save
+    elsif current_store
+      like = current_store.likes.new(post_id: post.id)
+      like.save
+    end
     redirect_to request.referer
   end
   
   def destroy
     post = Post.find(params[:post_id])
-    like = current_user.likes.find_by(post_id: post.id)
-    like.destroy
+    if current_user
+      like = current_user.likes.find_by(post_id: post.id)
+      like.destroy
+    elsif current_store
+      like = current_store.likes.find_by(post_id: post.id)
+      like.destroy
+    end
     redirect_to request.referer
   end
 end

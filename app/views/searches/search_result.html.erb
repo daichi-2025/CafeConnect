@@ -1,11 +1,9 @@
-
-<div class="d-flex justify-content-end mt-4 mb-2 mr-4">
-  <%= render "searches/search" %>
-</div>
-
-<table class="table table-hover table-inverse">
-  <tbody>
-    <% if @records.present? && @model == "user" %>
+<% if @records.present? && @model == "user" %>
+  <div class="d-flex justify-content-end mt-4 mb-2 mr-4">
+    <%= render "searches/search", category_name: "ユーザー名", search_method: @model %>
+  </div>
+  <table class="table table-hover table-inverse">
+    <tbody>
       <% @records.each do |user| %>
         <div class="container d-flex justify-content-center mt-4">
           <h2>ユーザー検索結果一覧</h2>
@@ -14,46 +12,79 @@
           <div class="card w-50 mx-auto mt-4 shadow-lg">
             <div class="card-body">
               <div class="row">
-                <%= user.name %></td>
-              </div>
-            </div>
-          </div>
-        </div>
-      <% end %>
-    <% else %>
-      <% if @records.present? %>
-        <% @records.each do |store| %>
-          <div class="container d-flex justify-content-center mt-4">
-            <h2>店舗検索結果一覧</h2>
-          </div>
-          <div class="card-list-container py-5">
-            <div class="card w-50 mx-auto mt-4 shadow-lg">
-              <div class="card-body">
-                <div class="row">
-                  <div class="col-4">
-                    <% if store.store_image.attached? %>
-                      <%= image_tag store.store_image, size: "150x150" %>
-                    <% end %>
-                  </div>
-                  <div class="col-8">
-                    <%= link_to(store_path(store.id), class: "text-dark") do %>
-                      <strong><span><%= store.store_name %></span></strong>
-                    <% end %>
-                    <p class="card-text"><%= store.phone_number %></p>
-                    <p class="card-text"><%= store.address %></p>
-                    <p class="card-text"><%= store.store_url %></p>
-                    <p class="card-text"><%= store.store_info %></p>
-                  </div>
+                <div class="col-3">
+                  <% if user.user_image.attached? %>
+                    <%= image_tag user.user_image, size: "100x100" %>
+                  <% else %>
+                    <%= image_tag 'no_image', size: "100x100" %>
+                  <% end %>
+                </div>
+                <div class="col-9">
+                  <%= link_to(user_path(user.id), class: "text-dark") do %>
+                    <strong><span><%= user.name %></span></strong>
+                <% end %>
+                  <p class="card-text"><%= user.email%></p>
                 </div>
               </div>
             </div>
           </div>
-        <% end %>
-      <% else %>
-        <div class="container d-flex justify-content-center mt-4">
-          <p>検索結果がありません</p>
         </div>
       <% end %>
-    <% end %>
-  </tbody>
-</table>
+    </tbody>
+  </table>
+<% elsif @model == "user" %>
+  <div class="d-flex justify-content-end mt-4 mb-2 mr-4">
+    <%= render "searches/search", category_name: "ユーザー名", search_method: @model %>
+  </div>
+  <div class="container d-flex justify-content-center mt-4">
+    <h2>ユーザー検索結果一覧</h2>
+  </div>
+  <div class="container d-flex justify-content-center mt-4">
+    <p>検索結果がありません</p>
+  </div>
+<% elsif @records.present? && @model == "store" %>
+  <div class="d-flex justify-content-end mt-4 mb-2 mr-4">
+    <%= render "searches/search", category_name: "店舗名", search_method: @model %>
+  </div>
+  <table class="table table-hover table-inverse">
+    <tbody>
+      <% @records.each do |store| %>
+        <div class="container d-flex justify-content-center mt-4">
+          <h2>店舗検索結果一覧</h2>
+        </div>
+        <div class="card-list-container py-5">
+          <div class="card w-50 mx-auto mt-4 shadow-lg">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-4">
+                  <% if store.store_image.attached? %>
+                    <%= image_tag store.store_image, size: "150x150" %>
+                  <% end %>
+                </div>
+                <div class="col-8">
+                  <%= link_to(store_path(store.id), class: "text-dark") do %>
+                    <strong><span><%= store.store_name %></span></strong>
+                  <% end %>
+                  <p class="card-text"><%= store.phone_number %></p>
+                  <p class="card-text"><%= store.address %></p>
+                  <p class="card-text"><%= store.store_url %></p>
+                  <p class="card-text"><%= store.store_info %></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <div class="d-flex justify-content-end mt-4 mb-2 mr-4">
+    <%= render "searches/search", category_name: "店舗名", search_method: @model %>
+  </div>
+  <div class="container d-flex justify-content-center mt-4">
+    <h2>店舗検索結果一覧</h2>
+  </div>
+  <div class="container d-flex justify-content-center mt-4">
+    <p>検索結果がありません</p>
+  </div>
+<% end %>
