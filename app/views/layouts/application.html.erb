@@ -48,22 +48,6 @@
               <li class="nav-item">
                 <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link text-dark' %>
               </li>
-            <% elsif admin_signed_in? %>
-              <li class="nav-item">
-                <%= link_to "店舗投稿一覧", posts_path, class: 'nav-link text-dark' %>
-              </li>
-              <li class="nav-item">
-                <%= link_to "店舗一覧", stores_path, class: 'nav-link text-dark' %>
-              </li>
-              <li class="nav-item">
-                <%= link_to "ユーザー一覧", users_path, class: 'nav-link text-dark' %>
-              </li>
-              <li class="nav-item">
-                <%= link_to "管理者マイページ", admins_mypage_path, class: 'nav-link text-dark' %>
-              </li>
-              <li class="nav-item">
-                <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link text-dark' %>
-              </li>
             <% else %>
               <li class="nav-item">
                 <%= link_to "店舗投稿一覧", posts_path, class: 'nav-link text-dark' %>

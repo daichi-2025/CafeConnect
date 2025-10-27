@@ -7,14 +7,21 @@ Rails.application.routes.draw do
     sessions: 'stores/sessions'
   }
 
-  devise_for :admins, controllers: {
-    registrations:  'admins/registrations',
-    sessions: 'admins/sessions'
+  devise_for :admin, skip: [:registrations, :password], controllers: {
+    sessions: 'admin/sessions'
   }
+
+  namespace :admin do
+    get 'users_dashboards', to: 'dashboards#users_index'
+    get 'stores_dashboards', to: 'dashboards#stores_index'
+    get 'posts_dashboards', to: 'dashboards#posts_index'
+    get 'mypages_dashboards', to: 'dashboards#mypages'
+    resources :users, only: [:destroy] 
+  end
  
   get 'users/mypage'
   get 'stores/mypage'
-  get 'admins/mypage'
+  # get 'admins/mypage'
   get 'top' => 'homes#top'
   root to: 'posts#index'
   get 'about' => 'homes#about'
