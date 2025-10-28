@@ -22,7 +22,7 @@
               </div>
             </div>
             <div class="row d-flex justify-content-end align-items-end mt-4 mr-2">
-              <%= link_to "編集", edit_admin_path(@admin.id) %>
+              <%= link_to "編集", admin_edit_dashboards_path(@admin.id) %>
               <%#= link_to "退会", admin_path(@admin.id), method: :delete, "data-confirm" => "本当に削除しますか？" "%>
             </div>
           <% end %>

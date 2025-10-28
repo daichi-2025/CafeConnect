@@ -17,7 +17,7 @@
             <% end %>
           </div>
           <div class="col-8">
-            <%= link_to(store_path(store.id), class: "text-dark") do %>
+            <%= link_to(admin_stores_show_dashboards_path(store.id), class: "text-dark") do %>
               <strong><span><%= store.store_name %></span></strong>
             <% end %>
             <p class="card-text"><%= store.phone_number %></p>

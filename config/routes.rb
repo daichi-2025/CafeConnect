@@ -17,6 +17,9 @@ Rails.application.routes.draw do
     get 'posts_dashboards', to: 'dashboards#posts_index'
     get 'mypages_dashboards', to: 'dashboards#mypages'
     get 'posts_show_dashboards', to: 'dashboards#posts_show'
+    get 'stores_show_dashboards', to: 'dashboards#stores_show'
+    get 'edit_dashboards', to: 'dashboards#edit'
+    patch 'edit_dashboards', to: 'dashboards#update' 
     resources :users, only: [:destroy] 
   end
  
