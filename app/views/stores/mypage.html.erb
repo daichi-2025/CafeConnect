@@ -21,6 +21,7 @@
                 <p class="card-text">店舗電話番号：<%= @store.phone_number %></p>
                 <p class="card-text">住所：<%= @store.address %></p>
                 <p class="card-text">店舗URL：<%= @store.store_url %></p>
+                <i class="fas fa-heart" aria-hidden="true"></i> <%= @store.favorites.count %> お気に入り
               </div>
             </div>
             <div class="row mt-4">
