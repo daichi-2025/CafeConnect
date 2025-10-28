@@ -35,12 +35,14 @@
       <div class= "row mt-4">
         <%= render "likes/btn", post: @post %>
       </div>
-      <div class="row mt-4">
-        <%= form_with model: [@post, @post_comment] do |f| %>
-          <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
-          <%= f.submit "送信する" %>
-        <% end %>
-      </div>
+      <%# if current_user == user || current_user == store || current_user == admin #%>
+        <div class="row mt-4">
+          <%= form_with model: [@post, @post_comment] do |f| %>
+            <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
+            <%= f.submit "送信する" %>
+          <% end %>
+        </div>
+      <% end %>
       <div class="row mt-4">
         <p>コメント件数：<%= @post.post_comments.count %></p>
       </div>
