@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     get 'stores_show_dashboards', to: 'dashboards#stores_show'
     get 'edit_dashboards', to: 'dashboards#edit'
     patch 'edit_dashboards', to: 'dashboards#update' 
+    get 'tagsearches/search', to: 'tagsearches#search'
     resources :users, only: [:destroy] 
   end
  
