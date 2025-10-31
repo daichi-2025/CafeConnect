@@ -6,7 +6,7 @@
     <tbody>
       <% @records.each do |user| %>
         <div class="container d-flex justify-content-center mt-4">
-          <h2>ユーザー検索結果一覧</h2>
+          <h2>ユーザー検索結果一覧：<%= @content %></h2>
         </div>
         <div class="card-list-container py-5">
           <div class="card w-50 mx-auto mt-4 shadow-lg">
@@ -50,7 +50,7 @@
     <tbody>
       <% @records.each do |store| %>
         <div class="container d-flex justify-content-center mt-4">
-          <h2>店舗検索結果一覧</h2>
+          <h2>店舗検索結果一覧：<%= @content %></h2>
         </div>
         <div class="card-list-container py-5">
           <div class="card w-50 mx-auto mt-4 shadow-lg">
