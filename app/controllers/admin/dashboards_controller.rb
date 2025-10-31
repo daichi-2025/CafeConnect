@@ -3,15 +3,15 @@ class Admin::DashboardsController < ApplicationController
   before_action :authenticate_admin!
 
   def users_index
-    @users = User.all
+    @users = User.all.order(created_at: :desc)
   end
 
   def stores_index
-    @stores = Store.all
+    @stores = Store.all.order(created_at: :desc)
   end
 
   def posts_index
-    @posts = Post.all
+    @posts = Post.all.order(created_at: :desc)
   end
 
   def mypages

@@ -2,11 +2,15 @@
   <%= render 'tagsearches/tagsearch'%>
 </div>
 
-<div class="container d-flex justify-content-center mt-4">
-  <div class="row">
-    <p class><h2>CafeConnect</h2></p class>
-    <p class><h4>〜カフェとの出会いをもっと楽しく、もっと便利に〜</4></p class>
-    <p class>気になるカフェの情報や投稿を調べたり、いいねやコメントができるレビューサイト。</p class>
+<div class="container">
+  <div class="row d-flex justify-content-center">
+    <h1>CafeConnect</h1>
+  </div>
+  <div class="row d-flex justify-content-center">
+    <p class><h5>〜カフェとの出会いをもっと楽しく、もっと便利に〜</h5></p class>
+  </div>
+  <div class="row d-flex justify-content-center">
+    <p class>気になるカフェの情報や投稿を調べたり、いいねやコメントができるレビューサイト</p class>
   </div>
 </div>
 
@@ -20,8 +24,8 @@
         <div class="card-body">
           <div class="row">
             <div class="col-10">
-              <p class="card-text">タイトル：<%= post.title %></p>
-              <p class="card-text">本文：<%= post.body %></p>
+              <p class="card-text"><strong><%= post.title %></p></strong>
+              <p class="card-text"><%= post.body %></p>
             </div>
             <div class="col-2">
               <% if post.post_image.attached? %>
@@ -42,6 +46,9 @@
             </div>
           </div>
           <div class="row d-flex justify-content-end align-items-end mr-3 mb-3">
+            <div class="created mr-4">
+              <%= post.created_at.strftime("%Y-%m-%d") %>
+            </div>
             <div class="category mr-4">
               <span><i class="fa-solid fa-tag"></i>カテゴリー：</span><%= post.category %>
               <%#=link_to post.category, tagsearches_search_path(content:@post.category) content?→body? controllerの記述も #%>  
