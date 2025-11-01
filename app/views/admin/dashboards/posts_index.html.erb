@@ -1,5 +1,5 @@
 <div class="d-flex justify-content-end mt-4 mb-2 mr-4">
-  <%= render 'tagsearches/tagsearch'%>
+  <%= render 'admin/dashboards/tagsearch'%>
 </div>
 
 <div class="container d-flex justify-content-center my-4">
@@ -26,7 +26,7 @@
             <%= image_tag post.store.get_store_image(80,80) %>
           </th>
           <th class="align-middle">
-            <%= link_to admin_stores_show_dashboards_path(post.store.id), class: "text-dark" do %>
+            <%= link_to admin_store_show_dashboards_path(post.store.id), class: "text-dark" do %>
               <strong><span><%= post.store.store_name %></span></strong>
             <% end %>
           </th>
@@ -34,7 +34,7 @@
             <%= post.created_at.strftime("%Y-%m-%d") %>
           </th>
           <th class="align-middle">
-            <%= link_to(admin_posts_show_dashboards_path(post.id), class: "text-dark") do %>
+            <%= link_to(admin_post_show_dashboards_path(post.id), class: "text-dark") do %>
               <strong>
                 <span style="display: inline-block; max-width: 300px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
                   <%= post.title %>
@@ -46,7 +46,7 @@
             <span><%= post.category %></span>
           </th>
           <th class="align-middle">
-            <%= link_to "#{post.post_comments.count} コメント", admin_posts_show_dashboards_path(post.id) %>
+            <%= link_to "#{post.post_comments.count} コメント", admin_post_show_dashboards_path(post.id) %>
           </th>
           <th class="align-middle">
             <%= render "likes/btn", post: post %>

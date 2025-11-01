@@ -17,18 +17,17 @@ Rails.application.routes.draw do
     get 'stores_dashboards', to: 'dashboards#stores_index'
     get 'posts_dashboards', to: 'dashboards#posts_index'
     get 'mypages_dashboards', to: 'dashboards#mypages'
-    get 'posts_show_dashboards', to: 'dashboards#posts_show'
-    get 'stores_show_dashboards', to: 'dashboards#stores_show'
+    get 'posts_show_dashboards/:id', to: 'dashboards#posts_show', as: "post_show_dashboards"
+    get 'stores_show_dashboards/:id', to: 'dashboards#stores_show', as: "store_show_dashboards"
     get 'edit_dashboards', to: 'dashboards#edit'
     patch 'edit_dashboards', to: 'dashboards#update' 
     get 'tagsearches/search', to: 'tagsearches#search'
-    get 'users_show_dashboards', to: 'dashboards#users_show'
+    get 'users_show_dashboards/:id', to: 'dashboards#users_show', as: "user_show_dashboards"
     resources :users, only: [:destroy] 
   end
  
   get 'users/mypage'
   get 'stores/mypage'
-  # get 'admins/mypage'
   get 'top' => 'homes#top'
   root to: 'posts#index'
   get 'about' => 'homes#about'
@@ -37,7 +36,6 @@ Rails.application.routes.draw do
   
   resources :stores do
     resources :favorites, only: [:create, :destroy, :index]
-    # resources :favorites, only: [:create, :destroy, :index]
   end
   resources :users
   resources :store_images, only: [:new, :index, :show, :create, :destroy]
@@ -45,6 +43,5 @@ Rails.application.routes.draw do
     resources :post_comments, only: [:create, :destroy, :edit]
     resource :likes, only: [:create, :destroy]
   end
-  #resources :admins
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
 end

@@ -1,4 +1,5 @@
-class TagsearchesController < ApplicationController
+class Admin::TagsearchesController < ApplicationController
+  layout 'admin' 
   def search
     @model = Post  #search機能とは関係なし
     @word = params[:content]  

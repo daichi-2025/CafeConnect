@@ -8,6 +8,7 @@ class Admin::DashboardsController < ApplicationController
 
   def users_show
     @user = User.find(params[:id])
+    
   end
 
   def stores_index
