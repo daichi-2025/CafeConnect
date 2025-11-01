@@ -6,7 +6,7 @@
   <h2>ユーザー一覧</h2>
 </div>
 
-<div class="col-md-8 offset-md-2">
+<div class="col-md-10 offset-md-1">
   <table class="table table-hover table-inverse">
     <thead>
       <tr>
@@ -14,6 +14,7 @@
         <th>ユーザー名</th>
         <th>メールアドレス</th>
         <th>コメント回数</th>
+        <th>お気に入り店舗</th>
         <th colspan="3"></th>
       </tr>
     </thead>
@@ -28,12 +29,15 @@
             <% end %>
           </th>
           <th class="align-middle">
-            <%= link_to(user_path(user.id), class: "text-dark") do %>
+            <%= link_to admin_users_show_dashboards_path(user.id), class: "text-dark" do %>
               <strong><span><%= user.name %></span>
             <% end %>
           </th>
           <th class="align-middle">
             <%= user.email%>
+          </th>
+          <th class="align-middle">
+            〇
           </th>
           <th class="align-middle">
             〇

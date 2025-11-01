@@ -21,7 +21,10 @@
                 <p class="card-text">店舗電話番号：<%= @store.phone_number %></p>
                 <p class="card-text">住所：<%= @store.address %></p>
                 <p class="card-text">店舗URL：<%= @store.store_url %></p>
-                <i class="fas fa-heart" aria-hidden="true"></i> <%= @store.favorites.count %> お気に入り
+                <%= link_to store_favorites_path(store_id: @store.id) do %>
+                  <i class="fas fa-heart" aria-hidden="true"></i>
+                  <%= @store.favorites.count %> お気に入り
+                <% end %>
               </div>
             </div>
             <div class="row mt-4">
@@ -101,7 +104,7 @@
                 </div>
               </div>
               <div class="row d-flex justify-content-end align-items-end mt-2 mr-2">
-                <%= link_to "投稿詳細", post_path(post.id), class: "text-dark" %>
+                <%= link_to "投稿詳細", post_path(post.id) %>
               </div>
             </div>
           </div>

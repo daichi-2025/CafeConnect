@@ -54,7 +54,7 @@
               <%#=link_to post.category, tagsearches_search_path(content:@post.category) content?→body? controllerの記述も #%>  
             </div>
             <div class="comment mr-4">
-              <%= link_to "#{post.post_comments.count} コメント", post_path(post.id), class: "text-dark" %>
+              <%= link_to "#{post.post_comments.count} コメント", post_path(post.id)%>
             </div>
             <div class="like">
               <%= render "likes/btn", post: post %>

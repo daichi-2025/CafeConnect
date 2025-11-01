@@ -6,6 +6,10 @@ class Admin::DashboardsController < ApplicationController
     @users = User.all.order(created_at: :desc)
   end
 
+  def users_show
+    @user = User.find(params[:id])
+  end
+
   def stores_index
     @stores = Store.all.order(created_at: :desc)
   end

@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     sessions: 'admin/sessions'
   }
 
+
   namespace :admin do
     get 'users_dashboards', to: 'dashboards#users_index'
     get 'stores_dashboards', to: 'dashboards#stores_index'
@@ -21,6 +22,7 @@ Rails.application.routes.draw do
     get 'edit_dashboards', to: 'dashboards#edit'
     patch 'edit_dashboards', to: 'dashboards#update' 
     get 'tagsearches/search', to: 'tagsearches#search'
+    get 'users_show_dashboards', to: 'dashboards#users_show'
     resources :users, only: [:destroy] 
   end
  
@@ -34,7 +36,7 @@ Rails.application.routes.draw do
   get 'tagsearches/search', to: 'tagsearches#search'
   
   resources :stores do
-    resources :favorites, only: [:create, :destroy]
+    resources :favorites, only: [:create, :destroy, :index]
     # resources :favorites, only: [:create, :destroy, :index]
   end
   resources :users
@@ -43,6 +45,6 @@ Rails.application.routes.draw do
     resources :post_comments, only: [:create, :destroy, :edit]
     resource :likes, only: [:create, :destroy]
   end
-  resources :admins
+  #resources :admins
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

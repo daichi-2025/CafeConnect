@@ -46,7 +46,7 @@
             <span><%= post.category %></span>
           </th>
           <th class="align-middle">
-            <%= link_to "#{post.post_comments.count} コメント", admin_posts_show_dashboards_path(post.id), class: "text-dark" %>
+            <%= link_to "#{post.post_comments.count} コメント", admin_posts_show_dashboards_path(post.id) %>
           </th>
           <th class="align-middle">
             <%= render "likes/btn", post: post %>

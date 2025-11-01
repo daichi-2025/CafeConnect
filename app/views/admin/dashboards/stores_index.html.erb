@@ -14,7 +14,7 @@
         <th>店舗名</th>
         <th>住所</th>
         <th>URL</th>
-        <th colspan="3"></th>
+        <th colspan="3">※お気に入り一覧へ↓</th>
       </tr>
     </thead>
     <tbody>
@@ -41,7 +41,10 @@
             </span>
           </th>
           <th class="align-middle">
-            <%= render "favorites/btn", store: store %>
+            <%= link_to store_favorites_path(store), method: :delete do %>
+              <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>
+              <%= store.favorites.count %> お気に入り
+            <% end %>
           </th>
         </tr>
       <% end %>
