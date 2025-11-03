@@ -23,6 +23,7 @@ Rails.application.routes.draw do
     patch 'edit_dashboards', to: 'dashboards#update' 
     get 'tagsearches/search', to: 'tagsearches#search'
     get 'users_show_dashboards/:id', to: 'dashboards#users_show', as: "user_show_dashboards"
+    get "search", to: "searches#search"
     resources :users, only: [:destroy] 
   end
  

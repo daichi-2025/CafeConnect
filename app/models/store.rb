@@ -10,6 +10,7 @@ class Store < ApplicationRecord
   has_one_attached :store_image
   has_many :favorites, dependent: :destroy
   has_many :likes, dependent: :destroy
+  has_many :post_comments, dependent: :destroy
 
   def self.search_for(content, method)
     if method == 'perfect'

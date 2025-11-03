@@ -1,5 +1,5 @@
 <div class="d-flex justify-content-end mt-4 mb-2 mr-4">
-  <%= render "searches/search", category_name: "店舗名", search_method: "store" %>
+  <%= render "admin/searches/search", category_name: "店舗名", search_method: "store" %>
 </div>
 
 <div class="container d-flex justify-content-center my-4">
@@ -41,7 +41,7 @@
             </span>
           </th>
           <th class="align-middle">
-            <%= link_to store_favorites_path(store), method: :delete do %>
+            <%= link_to store_favorites_path(store) do %>
               <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>
               <%= store.favorites.count %> お気に入り
             <% end %>

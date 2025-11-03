@@ -50,11 +50,19 @@
       <div class="row mt-4">
         <% @post.post_comments.each do |post_comment| %>
           <div class="col-1 mb-4">
-            <%= image_tag post_comment.user.get_user_image(70,70) %>
+            <% if post_comment.user %>
+              <%= image_tag post_comment.user.get_user_image(70,70) %>
+            <% elsif post_comment.store %>
+              <%= image_tag post_comment.store.get_store_image(70,70) %>
+            <% end %>
           </div>
           <div class="col-11">
             <div class="row ml-2">
-              <%= post_comment.user.name %>
+              <% if post_comment.user %>
+                <%= post_comment.user.name %>
+              <% elsif post_comment.store %>
+                <%= post_comment.store.store_name %>
+              <% end %>
               <%= post_comment.created_at.strftime('%Y-%m-%d') %>
             </div>
             <div class="row ml-2">

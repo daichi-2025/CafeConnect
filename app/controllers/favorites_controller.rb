@@ -17,7 +17,7 @@ class FavoritesController < ApplicationController
     if current_user
       favorite = current_user.favorites.find_by(store_id: store.id)
       favorite.destroy
-    elsif urrent_store
+    elsif current_store
       favorite = current_store.favorites.find_by(store_id: store.id)
      favorite.destroy
     else

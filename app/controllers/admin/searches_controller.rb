@@ -1,4 +1,5 @@
-class SearchesController < ApplicationController
+class Admin::SearchesController < ApplicationController
+  layout 'admin' 
   def search
     @model = params[:model]
     @content = params[:content]
