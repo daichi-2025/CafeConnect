@@ -28,11 +28,10 @@
           </div>
         </div>
       <% end %>
-      <div class= "row">
-        <span><i class="fa-solid fa-tag"></i>カテゴリー：<%= @post.category%></span>
-      </div>
       <div class= "row mt-4">
-        <%= render "likes/btn", post: @post %>
+        <p class="created ml-2 mr-4"><%= @post.created_at.strftime("%Y-%m-%d")%></p>
+        <p class="category mr-4"><i class="fa-solid fa-tag"></i>カテゴリー：<%= @post.category%></p>
+        <p class="like mr-4"><%= render "likes/btn", post: @post %></p>
       </div>
       <div class="row mt-4">
         <% if user_signed_in? || store_signed_in? %>
