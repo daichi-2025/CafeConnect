@@ -36,7 +36,8 @@ Rails.application.routes.draw do
   get 'tagsearches/search', to: 'tagsearches#search'
   
   resources :stores do
-    resources :favorites, only: [:create, :destroy, :index]
+    resources :favorites, only: [:create, :index]
+    resource :favorites, only: [:destroy]
   end
   
   resources :users do

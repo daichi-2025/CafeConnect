@@ -4,12 +4,8 @@ class FavoritesController < ApplicationController
     if current_user
       favorite = current_user.favorites.new(store_id: store.id)
       favorite.save
-    elsif current_store
-      favorite = current_store.favorites.new(store_id: store.id)
-      favorite.save
-    else
-      redirect_to request.referer
     end
+      redirect_to request.referer
   end
   
   def destroy
@@ -17,12 +13,8 @@ class FavoritesController < ApplicationController
     if current_user
       favorite = current_user.favorites.find_by(store_id: store.id)
       favorite.destroy
-    elsif current_store
-      favorite = current_store.favorites.find_by(store_id: store.id)
-      favorite.destroy
-    else
-      redirect_to request.referer
     end
+      redirect_to request.referer
   end
 
   # def index
