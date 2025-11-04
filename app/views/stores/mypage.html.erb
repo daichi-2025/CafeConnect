@@ -93,8 +93,8 @@
             <div class="card-body">
               <div class="row">
                 <div class="col-10">
-                  <p class="card-text">タイトル：<%= post.title %></p>
-                  <p class="card-text">本文：<%= post.body %></p>
+                  <p class="card-text"><strong><%= post.title %></strong></p>
+                  <p class="card-text"><%= post.body %></p>
                 </div>
                 <div class="col-2">
                   <% if post.post_image.attached? %>

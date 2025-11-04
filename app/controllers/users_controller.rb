@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :is_matching_login_user, only: [:edit, :update]
+  before_action :is_matching_login_user, only: [:edit, :update, :favorites]
 
   def index
     @users = User.all.order(created_at: :desc)
@@ -31,6 +31,13 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+  end
+
+  def favorites 
+    @user = User.find(params[:id])
+    favorites = Favorite.where(user_id: @user.id).pluck(:store_id)
+    @favorite_stores = Store.find(favorites)
+    @store = Store.find(params[:id])
   end
 
   private

@@ -19,7 +19,7 @@ class FavoritesController < ApplicationController
       favorite.destroy
     elsif current_store
       favorite = current_store.favorites.find_by(store_id: store.id)
-     favorite.destroy
+      favorite.destroy
     else
       redirect_to request.referer
     end

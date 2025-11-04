@@ -38,7 +38,13 @@ Rails.application.routes.draw do
   resources :stores do
     resources :favorites, only: [:create, :destroy, :index]
   end
-  resources :users
+  
+  resources :users do
+    member do
+      get :favorites 
+    end
+  end
+    
   resources :store_images, only: [:new, :index, :show, :create, :destroy]
   resources :posts do
     resources :post_comments, only: [:create, :destroy, :edit]
