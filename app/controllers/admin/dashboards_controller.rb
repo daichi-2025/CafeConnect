@@ -45,10 +45,10 @@ class Admin::DashboardsController < ApplicationController
     redirect_to admin_mypages_dashboards_path(admin.id)  
   end
 
-  # def favorites_index
-  #   @store = current_store
-  #   @users = @store.favorite_users.all
-  # end
+  def favorites_index
+    @store = current_store
+    @users = @store.favorite_users
+  end
 
   private
   

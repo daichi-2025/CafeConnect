@@ -24,12 +24,13 @@
         <div class="card-body">
           <div class="row">
             <div class="col-10">
-              <p class="card-text"><strong><%= post.title %></p></strong>
-              <p class="card-text"><%= post.body %></p>
+              <%= link_to post_path(post.id), class: "text-dark" do %>
+                <strong><span><%= post.title %></span></strong>
+              <% end %>
+              <p class="card-text mt-3"><%= post.body %></p>
             </div>
             <div class="col-2">
               <% if post.post_image.attached? %>
-                <%#= image_tag post.post_image, size: "20x20" #%>
                 <%= image_tag post.post_image, class: "card-img-top"; %>
               <% end %>
             </div>

@@ -28,8 +28,12 @@
           </div>
         </div>
       <% end %>
-      <div class= "row mt-4">
-        <p class="created ml-2 mr-4"><%= @post.created_at.strftime("%Y-%m-%d")%></p>
+      <div class= "row align-items-end mt-4">
+        <%= image_tag @post.store.get_store_image(80,80), class: "rounded-circle mr-4"; %>
+        <%= link_to(store_path(@post.store.id), class: "text-dark mb-3 mr-4") do %>
+          <strong><i class="far fa-flag"></i><span><%= @post.store.store_name %></span></strong>
+        <% end %>
+        <p class="created mr-4"><%= @post.created_at.strftime("%Y-%m-%d")%></p>
         <p class="category mr-4"><i class="fa-solid fa-tag"></i>カテゴリー：<%= @post.category%></p>
         <p class="like mr-4"><%= render "likes/btn", post: @post %></p>
       </div>

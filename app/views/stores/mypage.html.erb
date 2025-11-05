@@ -93,8 +93,10 @@
             <div class="card-body">
               <div class="row">
                 <div class="col-10">
-                  <p class="card-text"><strong><%= post.title %></strong></p>
-                  <p class="card-text"><%= post.body %></p>
+                  <%= link_to post_path(post.id), class: "text-dark" do %>
+                    <strong><span><%= post.title %></span></strong>
+                  <% end %>
+                  <p class="card-text mt-3"><%= post.body %></p>
                 </div>
                 <div class="col-2">
                   <% if post.post_image.attached? %>
@@ -103,8 +105,9 @@
                   <% end %>
                 </div>
               </div>
-              <div class="row d-flex justify-content-end align-items-end mt-2 mr-2">
-                <%= link_to "投稿詳細", post_path(post.id) %>
+              <div class="row d-flex justify-content-between mt-4 mx-2">
+                <%= post.created_at.strftime("%Y-%m-%d") %>
+                <%#= link_to "投稿詳細", post_path(post.id) #%>
               </div>
             </div>
           </div>

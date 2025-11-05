@@ -5,6 +5,7 @@ class Store < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :store_name, presence: true
+  validates :phone_number, allow_blank: true, numericality: {only_integer: true}, length: { in: 10..11 }
   
   has_many :posts, dependent: :destroy
   has_one_attached :store_image
