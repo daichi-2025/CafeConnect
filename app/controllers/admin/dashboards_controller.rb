@@ -8,7 +8,6 @@ class Admin::DashboardsController < ApplicationController
 
   def users_show
     @user = User.find(params[:id])
-    
   end
 
   def stores_index
@@ -45,6 +44,11 @@ class Admin::DashboardsController < ApplicationController
     admin.update(admin_params)
     redirect_to admin_mypages_dashboards_path(admin.id)  
   end
+
+  # def favorites_index
+  #   @store = current_store
+  #   @users = @store.favorite_users.all
+  # end
 
   private
   

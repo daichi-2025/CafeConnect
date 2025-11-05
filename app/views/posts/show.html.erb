@@ -24,7 +24,7 @@
             <%= link_to "編集", edit_post_path(@post.id) %> 
           </div>
           <div class="delete">
-            <%= link_to "削除", new_store_registration_path(@post.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+            <%= link_to "削除", post_path(@post.id), method: :delete, "data-confirm" => "本当にこの投稿を削除しますか？" %>
           </div>
         </div>
       <% end %>
@@ -73,7 +73,7 @@
                   <%= link_to "編集", post_post_comment_path(@post, post_comment), method: :edit %> 
                 </div>
                 <div class="delete">
-                  <%= link_to "削除", post_post_comment_path(@post, post_comment), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+                  <%= link_to "削除", post_post_comment_path(@post, post_comment), method: :delete, "data-confirm" => "本当にこのコメントを削除しますか？" %>
                 </div>
               </div>
             <% end %>

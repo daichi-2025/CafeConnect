@@ -9,6 +9,7 @@ class Store < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_one_attached :store_image
   has_many :favorites, dependent: :destroy
+  has_many :favorite_users, through: :favorites, source: :user
   has_many :likes, dependent: :destroy
   has_many :post_comments, dependent: :destroy
 

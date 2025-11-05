@@ -17,8 +17,8 @@ class FavoritesController < ApplicationController
       redirect_to request.referer
   end
 
-  # def index
-  #   @store = Store
-  #   @user = surrent_store.favorited_users 
-  # end
+  def index
+    @store = current_store
+    @users = @store.favorite_users
+  end
 end

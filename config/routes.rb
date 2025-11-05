@@ -24,6 +24,7 @@ Rails.application.routes.draw do
     get 'tagsearches/search', to: 'tagsearches#search'
     get 'users_show_dashboards/:id', to: 'dashboards#users_show', as: "user_show_dashboards"
     get "search", to: "searches#search"
+    get 'favorites_dashboards', to: 'dashboards#favorites_index'
     resources :users, only: [:destroy] 
   end
  
