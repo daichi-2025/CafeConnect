@@ -46,7 +46,7 @@ class Admin::DashboardsController < ApplicationController
   end
 
   def favorites_index
-    @store = current_store
+    @store = Store.find(params[:id])
     @users = @store.favorite_users
   end
 
