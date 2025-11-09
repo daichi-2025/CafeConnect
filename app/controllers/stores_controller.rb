@@ -30,7 +30,7 @@ class StoresController < ApplicationController
   def destroy
     store = Store.find(current_store.id)  
     store.destroy  
-    redirect_to new_store_registration_path
+    redirect_to top_path
   end
 
   def update
