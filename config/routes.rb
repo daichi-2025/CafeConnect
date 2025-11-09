@@ -49,8 +49,7 @@ Rails.application.routes.draw do
     
   resources :store_images, only: [:new, :index, :show, :create, :destroy]
   resources :posts do
-    resources :post_comments, only: [:create, :edit]
-    resource :post_comments, only: [:destroy]
+    resources :post_comments, only: [:create, :destroy, :edit]
     resource :likes, only: [:create, :destroy]
   end
 
