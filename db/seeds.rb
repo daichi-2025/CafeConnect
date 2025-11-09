@@ -84,7 +84,7 @@ end
 
 Post.find_or_create_by!(title: "ハロウィン限定のパンプキンラテを提供します！") do |post|
   post.post_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-post2.jpg"), filename:"sample-post2.jpg")
-  post.caption = "ハロウィン限定のドリンクでパンプキンラテを提供します。シナモンとナツメグのスパイス感にパンプキンのソースを追加した特別なラテです。どうぞお試しください！ ハッピーハロウィン！"
+  post.body = "ハロウィン限定のドリンクでパンプキンラテを提供します。シナモンとナツメグのスパイス感にパンプキンのソースを追加した特別なラテです。どうぞお試しください！ ハッピーハロウィン！"
   post.store = DMM_Cafe
   post.category = "コーヒー"
   post.remember_created_at = DateTime.new(2025,10,27) 
@@ -92,14 +92,14 @@ end
 
 Post.find_or_create_by!(title: "コーヒー豆10%オフ!") do |post|
   post.post_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-post3.jpg"), filename:"sample-post3.jpg")
-  post.caption = "本日から1週間、店のコーヒー豆10%オフセールです！ 貴重なエチオピアのコーヒーや店舗のオリジナルブレンドもいつもよりお得にご購入ができます。 気になるお豆は、テイスティングも時間があれば行いますので、ぜひ足を運んでくださいね。"
+  post.body = "本日から1週間、店のコーヒー豆10%オフセールです！ 貴重なエチオピアのコーヒーや店舗のオリジナルブレンドもいつもよりお得にご購入ができます。 気になるお豆は、テイスティングも時間があれば行いますので、ぜひ足を運んでくださいね。"
   post.store = ABC_Cafe
   post.category = "コーヒー"
   post.remember_created_at = DateTime.new(2025,11,1) 
 end
 
 Post.find_or_create_by!(title: "忘れ物") do |post|
-  post.caption = "本日10時から11時ごろに来店されたお客様で赤い傘をお忘れになった方はいませんでしょうか、で保管しておりますので、ご一報くださればと思います。よろしくお願いします。"
+  post.body = "本日10時から11時ごろに来店されたお客様で赤い傘をお忘れになった方はいませんでしょうか、で保管しておりますので、ご一報くださればと思います。よろしくお願いします。"
   post.store = ABC_Cafe
   post.category = "その他"
   post.remember_created_at = DateTime.new(2025,11,5) 
