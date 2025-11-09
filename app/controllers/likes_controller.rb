@@ -15,11 +15,14 @@ class LikesController < ApplicationController
     post = Post.find(params[:post_id])
     if current_user
       like = current_user.likes.find_by(post_id: post.id)
-      like.destroy
     elsif current_store
       like = current_store.likes.find_by(post_id: post.id)
+    end
+
+    if like
       like.destroy
     end
+    
     redirect_to request.referer
   end
 end
