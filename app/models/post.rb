@@ -9,7 +9,11 @@ class Post < ApplicationRecord
 
   has_many :likes, dependent: :destroy
 
-  def liked_by?(user)
+  def user_liked_by?(user)
     likes.exists?(user_id: user&.id)
+  end
+  
+  def store_liked_by?(store)
+    likes.exists?(store_id: store&.id)
   end
 end
