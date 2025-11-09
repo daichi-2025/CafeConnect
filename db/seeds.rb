@@ -33,7 +33,7 @@ DMM_Cafe.assign_attributes(
   phone_number: "00000000000",
   address: "東京都葛飾区〇〇 〇〇ー〇〇ー〇〇",
   store_url: "dmm_cafe.com",
-  store_info: "東京都墨田区..."
+  store_info: "東京都墨田区にあるカフェです。店内からはスカイツリーを眺めることができます。オリジナルのコーヒーと和菓子を一緒にお楽しみください."
 )
 
 DMM_Cafe.store_image.attach(
