@@ -25,8 +25,7 @@ Rails.application.routes.draw do
     get 'users_show_dashboards/:id', to: 'dashboards#users_show', as: "user_show_dashboards"
     get "search", to: "searches#search"
     get 'favorites_dashboards/:id', to: 'dashboards#favorites_index', as: "favorites_dashboards"
-    get 'users_dashboards/:id', to: 'dashboards#users_destroy', as: "user_dashboards"
-    #resource :users, only: [:destroy] 
+    delete 'users_dashboards/:id', to: 'dashboards#users_destroy', as: "user_dashboards"
   end
  
   get 'users/mypage'

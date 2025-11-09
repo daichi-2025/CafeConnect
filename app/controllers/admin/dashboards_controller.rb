@@ -13,7 +13,7 @@ class Admin::DashboardsController < ApplicationController
   def users_destroy
     @user = User.find(params[:id])
     @user.destroy
-    redirect_to admin_dashboards_path, notice: 'ユーザーを削除しました。'
+    redirect_to admin_users_dashboards_path, notice: 'ユーザーを削除しました。'
   end
 
   def stores_index
