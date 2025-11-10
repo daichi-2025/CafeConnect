@@ -16,6 +16,7 @@ class PostCommentsController < ApplicationController
     post_comment.destroy  
     redirect_to post_path
   end
+  
   private
 
   def post_comment_params
