@@ -62,9 +62,9 @@
           <div class="col-10">
             <div class="row ml-2">
               <% if post_comment.user %>
-                <%= post_comment.user.name %>
+                <span class="name mr-4"><%= post_comment.user.name %></span>
               <% elsif post_comment.store %>
-                <%= post_comment.store.store_name %>
+                <span class="name mr-4"><%= post_comment.store.store_name %></span>
               <% end %>
               <%= post_comment.created_at.strftime('%Y-%m-%d') %>
             </div>

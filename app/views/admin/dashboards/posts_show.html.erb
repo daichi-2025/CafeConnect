@@ -44,15 +44,15 @@
           <div class="col-10">
             <div class="row ml-2">
               <% if post_comment.user %>
-                <%= link_to admin_user_show_dashboards_path(user.id) do %>
-                  <span><%= post_comment.user.name %></span>
+                <%= link_to admin_user_show_dashboards_path(post_comment.user.id) do %>
+                  <span class="name mr-4"><%= post_comment.user.name %></span>
                 <% end %>
               <% elsif post_comment.store %>
-                <%= link_to admin_store_show_dashboards_path(store.id) do %>
-                  <span><%= post_comment.store.store_name %></span>
+                <%= link_to admin_store_show_dashboards_path(post_comment.store.id) do %>
+                  <span class="name mr-4"><%= post_comment.store.store_name %></span>
                 <% end %>
               <% end %>
-              <%= post_comment.created_at.strftime('%Y/%m/%d') %>
+              <%= post_comment.created_at.strftime('%Y/%m/%d')%>
             </div>
             <div class="row ml-2">
               <%= post_comment.comment %>
