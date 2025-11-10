@@ -24,16 +24,16 @@
             <ul class="navbar-nav ml-auto">
               <% if admin_signed_in? %>
                 <li class="nav-item">
-                  <%= link_to "店舗投稿一覧", admin_posts_dashboards_path, class: 'nav-link text-dark' %>
+                  <%= link_to "店舗投稿一覧", admin_posts_path, class: 'nav-link text-dark' %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to "店舗一覧", admin_stores_dashboards_path, class: 'nav-link text-dark' %>
+                  <%= link_to "店舗一覧", admin_stores_path, class: 'nav-link text-dark' %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to "ユーザー一覧", admin_users_dashboards_path, class: 'nav-link text-dark' %>
+                  <%= link_to "ユーザー一覧", admin_users_path, class: 'nav-link text-dark' %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to "管理者マイページ", admin_mypages_dashboards_path, class: 'nav-link text-dark' %>
+                  <%= link_to "管理者マイページ", admin_mypage_path, class: 'nav-link text-dark' %>
                 </li>
                 <li class="nav-item">
                   <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link text-dark' %>

@@ -42,7 +42,7 @@
             <div class="card-body">
               <div class="row">
                 <div class="col-10">
-                <%= link_to admin_post_show_dashboards_path(post.id), class: "text-dark" do %>
+                <%= link_to admin_post_path(post.id), class: "text-dark" do %>
                   <strong><span><%= post.title %></span></strong>
                 <% end %>
                 <p class="card-text mt-3"><%= post.body %></p>

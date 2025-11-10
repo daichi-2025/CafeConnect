@@ -11,32 +11,34 @@ Rails.application.routes.draw do
     sessions: 'admin/sessions'
   }
 
-
   namespace :admin do
-    get 'users_dashboards', to: 'dashboards#users_index'
-    get 'stores_dashboards', to: 'dashboards#stores_index'
-    get 'posts_dashboards', to: 'dashboards#posts_index'
-    get 'mypages_dashboards', to: 'dashboards#mypages'
-    get 'posts_show_dashboards/:id', to: 'dashboards#posts_show', as: "post_show_dashboards"
-    get 'stores_show_dashboards/:id', to: 'dashboards#stores_show', as: "store_show_dashboards"
-    get 'edit_dashboards', to: 'dashboards#edit'
-    patch 'edit_dashboards', to: 'dashboards#update' 
+    root "posts#index"
+    resources :admins, only: [:edit, :update]
+    get 'mypage', to: 'admins#mypage'
+    resources :posts, only: [:index, :show, :destroy]
+    resources :users, only: [:index, :show, :destroy]
+    resources :stores, only: [:index, :show, :destroy] do
+      member do
+        get :favorites
+      end
+    end
+    resources :post_comments, only: [:destroy]
     get 'tagsearches/search', to: 'tagsearches#search'
-    get 'users_show_dashboards/:id', to: 'dashboards#users_show', as: "user_show_dashboards"
     get "search", to: "searches#search"
-    get 'favorites_dashboards/:id', to: 'dashboards#favorites_index', as: "favorites_dashboards"
-    delete 'users_dashboards/:id', to: 'dashboards#users_destroy', as: "user_dashboards"
   end
  
   get 'users/mypage'
   get 'stores/mypage'
-  get 'top' => 'homes#top'
-  root to: 'posts#index'
-  get 'about' => 'homes#about'
-  get "search" => "searches#search"
+  get 'top', to: 'homes#top'
+  root 'posts#index'
+  get 'about', to: 'homes#about'
+  get "search", to: "searches#search"
   get 'tagsearches/search', to: 'tagsearches#search'
   
   resources :stores do
+    member do
+      get :favorites
+    end
     resources :favorites, only: [:create, :index]
     resource :favorites, only: [:destroy]
   end
@@ -52,5 +54,4 @@ Rails.application.routes.draw do
     resources :post_comments, only: [:create, :destroy, :edit]
     resource :likes, only: [:create, :destroy]
   end
-
 end

@@ -26,7 +26,7 @@
             <% end %>
           </th>
           <th class="align-middle">
-            <%= link_to admin_store_show_dashboards_path(store.id), class: "text-dark" do %>
+            <%= link_to admin_store_path(store.id), class: "text-dark" do %>
               <strong><span><%= store.store_name %></span></strong>
             <% end %>
           </th>
@@ -41,7 +41,7 @@
             </span>
           </th>
           <th class="align-middle">
-            <%= link_to admin_favorites_dashboards_path(store) do %>
+            <%= link_to favorites_admin_store_path(store) do %>
               <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>
               <%= store.favorites.count %> お気に入り
             <% end %>

@@ -47,6 +47,11 @@ class StoresController < ApplicationController
     @store = Store.find(params[:id])
   end
 
+  def favorites
+    @store = Store.find(params[:id])
+    @users = @store.favorite_users
+  end
+
   private
   def store_params
     params.require(:store).permit(:store_image, :store_name, :email, :phone_number, :address, :store_url, :store_info)

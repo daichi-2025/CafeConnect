@@ -13,7 +13,7 @@
             <% end %>
           </ul>
         <% end %>
-        <%= form_with model: @admin, url: admin_edit_dashboards_path(@admin.id), method: :patch do |f| %>
+        <%= form_with model: [:admin, @admin] do |f| %>
           <div class="row">
             <div class="col-3">
               <% if @admin.admin_image.attached? %>

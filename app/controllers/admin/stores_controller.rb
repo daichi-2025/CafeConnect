@@ -1,0 +1,22 @@
+class Admin::StoresController < ApplicationController
+  layout 'admin' 
+  before_action :authenticate_admin!
+
+  def index
+    @stores = Store.all.order(created_at: :desc)
+  end
+
+  def show
+    @store = Store.find(params[:id])
+    @store_name = @store.store_name
+    @store_image = @store.store_image
+    @post = Post.new
+    @posts = @store.posts.order(created_at: :desc)
+  end
+
+  def favorites
+    @store = Store.find(params[:id])
+    @users = @store.favorite_users
+  end
+
+end

@@ -44,18 +44,23 @@
           <div class="col-10">
             <div class="row ml-2">
               <% if post_comment.user %>
-                <%= link_to admin_user_show_dashboards_path(post_comment.user.id) do %>
+                <%= link_to admin_user_path(post_comment.user.id) do %>
                   <span class="name mr-4"><%= post_comment.user.name %></span>
                 <% end %>
               <% elsif post_comment.store %>
-                <%= link_to admin_store_show_dashboards_path(post_comment.store.id) do %>
+                <%#= link_to admin_store_path(post_comment.store.id) do %>
                   <span class="name mr-4"><%= post_comment.store.store_name %></span>
-                <% end %>
+                <%# end %>
               <% end %>
               <%= post_comment.created_at.strftime('%Y/%m/%d')%>
             </div>
             <div class="row ml-2">
               <%= post_comment.comment %>
+            </div>
+            <div class="row d-flex justify-content-end align-items-end mt-4 mr-3">
+              <div class="delete">
+                <%= link_to "削除", admin_post_comment_path(post_comment.id), method: :delete, "data-confirm" => "本当にこのコメントを削除しますか？" %>
+              </div>
             </div>
           </div>
         <% end %>
