@@ -30,7 +30,7 @@
       <% end %>
       <div class= "row">
         <span><i class="fa-solid fa-tag"></i>カテゴリー：</span>
-        <%=link_to @post.category, tagsearches_search_path(body:@post.category)%>
+        <%= @post.category%>
       </div>
       <div class= "row mt-4">
         <%= render "likes/btn", post: @post %>
