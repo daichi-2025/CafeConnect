@@ -34,19 +34,23 @@
       </div>
       <div class="row mt-4">
         <% @post.post_comments.each do |post_comment| %>
-          <div class="col-1 mb-4">
+          <div class="col-2 mb-4">
             <% if post_comment.user %>
               <%= image_tag post_comment.user.get_user_image(70,70) %>
             <% elsif post_comment.store %>
               <%= image_tag post_comment.store.get_store_image(70,70) %>
             <% end %>
           </div>
-          <div class="col-11">
+          <div class="col-10">
             <div class="row ml-2">
               <% if post_comment.user %>
-                <%= post_comment.user.name %>
+                <%= link_to admin_user_show_dashboards_path(user.id) do %>
+                  <span><%= post_comment.user.name %></span>
+                <% end %>
               <% elsif post_comment.store %>
-                <%= post_comment.store.store_name %>
+                <%= link_to admin_store_show_dashboards_path(store.id) do %>
+                  <span><%= post_comment.store.store_name %></span>
+                <% end %>
               <% end %>
               <%= post_comment.created_at.strftime('%Y/%m/%d') %>
             </div>
