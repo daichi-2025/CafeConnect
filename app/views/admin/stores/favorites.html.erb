@@ -25,7 +25,7 @@
             <% end %>
           </th>
           <th class="align-middle">
-            <%= link_to admin_user_show_dashboards_path(user.id), class: "text-dark" do %>
+            <%= link_to admin_user_path(user.id), class: "text-dark" do %>
               <strong><span><%= user.name %></span>
             <% end %>
           </th>
@@ -39,7 +39,7 @@
             公開中 | 非公開中
           </th>
           <th class="align-middle">
-            <%= link_to '削除', admin_user_dashboards_path(user), method: :delete, data: { confirm: '本当にこのユーザーを削除しますか？' } %> 
+            <%= link_to '削除', admin_user_path(user), method: :delete, data: { confirm: '本当にこのユーザーを削除しますか？' } %> 
           </th>
         </tr>
       <% end %>
