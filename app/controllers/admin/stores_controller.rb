@@ -14,6 +14,12 @@ class Admin::StoresController < ApplicationController
     @posts = @store.posts.order(created_at: :desc)
   end
 
+  def destroy
+    @store = Store.find(params[:id])
+    @store.destroy
+    redirect_to admin_stores_path, notice: '店舗を削除しました。'
+  end
+
   def favorites
     @store = Store.find(params[:id])
     @users = @store.favorite_users

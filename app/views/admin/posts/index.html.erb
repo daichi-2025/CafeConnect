@@ -52,6 +52,9 @@
             <i class="fa-solid fa-thumbs-up" aria-hidden="true"></i>
             <%= post.likes.count %> いいね
           </th>
+          <th class="align-middle">
+            <%= link_to '削除', admin_post_path(post), method: :delete, data: { confirm: '本当にこの投稿を削除しますか？' } %> 
+          </th>
         </tr>
       <% end %>
     </tbody>
