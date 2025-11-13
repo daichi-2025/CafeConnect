@@ -29,6 +29,11 @@ async function initMap() {
       const longitude = item.longitude;
       const storeName = item.store_name;
 
+      const storeImage = item.store_image;
+      // const postImage = item.image;
+      const address = item.address;
+      const caption = item.store_info;
+
       const marker = new google.maps.marker.AdvancedMarkerElement ({
         position: { lat: latitude, lng: longitude },
         map,
@@ -37,7 +42,30 @@ async function initMap() {
       });
 
       //ここから追記
+      const contentString = `
+        <div class="information container p-0">
+          <div class="mb-3 d-flex align-items-center">
+            <p class="lead m-0 font-weight-bold">${storeName}</p>
+            <img class="mr-2" src="${storeImage}" width="100" height="100">
+          </div>
+          <div>
+            <p class="text-muted">${address}</p>
+            <p class="lead">${caption}</p>
+          </div>
+        </div>
+      `;
       
+      const infowindow = new google.maps.InfoWindow({
+        content: contentString,
+        ariaLabel: storeName,
+      });
+      
+      marker.addListener("click", () => {
+          infowindow.open({
+          anchor: marker,
+          map,
+        })
+      });
     });
   } catch (error) {
     console.error('Error fetching or processing post images:', error);
