@@ -42,12 +42,29 @@
             </div>
             <%= f.text_field :phone_number, class: "form-control", placeholder: "店舗電話番号 10-11文字の整数で入力してください" %>
           </div>
+
+
+          # <div class="input-group mb-3 mt-4">
+          #   <div class="input-group-prepend">
+          #     <span class="input-group-text" aria-hidden="true"></span>
+          #   </div>
+          #   <%= f.text_field :address, class: "form-control", placeholder: "住所" %>
+          # </div>
+
           <div class="input-group mb-3 mt-4">
             <div class="input-group-prepend">
-              <span class="input-group-text" aria-hidden="true"></span>
+              <span class="input-group-text" aria-hidden="true"><i class="fa-solid fa-tenge-sign"></i></span>
+            </div>
+            <%= text_field_tag :zipcode, nil, class: "form-control", placeholder: "郵便番号" %>
+          </div>
+          <div class="input-group mb-3 mt-4">
+            <div class="input-group-prepend">
+              <span class="input-group-text" aria-hidden="true"><i class="fa-solid fa-location-dot"></i></span>
             </div>
             <%= f.text_field :address, class: "form-control", placeholder: "住所" %>
           </div>
+
+
           <div class="input-group mb-3 mt-4">
             <div class="input-group-prepend">
               <span class="input-group-text" aria-hidden="true"></span>
@@ -62,3 +79,5 @@
     </div>
   </div>
 </div>
+
+<%= javascript_pack_tag "jpostal",  'data-turbolinks-track': 'reload' %>

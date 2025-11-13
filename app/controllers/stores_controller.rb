@@ -8,6 +8,14 @@ class StoresController < ApplicationController
 
   def index
     @stores = Store.all.order(created_at: :desc)
+    respond_to do |format|
+      format.html do
+        @stores = Store.page(params[:page])
+      end
+      format.json do
+        @stores = Store.all
+      end
+    end
   end
 
   def show

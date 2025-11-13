@@ -6,7 +6,10 @@ class Store < ApplicationRecord
 
   validates :store_name, presence: true
   validates :phone_number, allow_blank: true, numericality: {only_integer: true}, length: { in: 10..11 }
-  
+  validates :address, presence: true
+  geocoded_by :address
+  after_validation :geocode
+
   has_many :posts, dependent: :destroy
   has_one_attached :store_image
   has_many :favorites, dependent: :destroy

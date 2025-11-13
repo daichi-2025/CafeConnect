@@ -54,4 +54,6 @@ Rails.application.routes.draw do
     resources :post_comments, only: [:create, :destroy, :edit]
     resource :likes, only: [:create, :destroy]
   end
+
+  resource :map, only: [:show]
 end

@@ -31,7 +31,7 @@ DMM_Cafe.assign_attributes(
   store_name: "DMM Cafe",
   password: "password",
   phone_number: "00000000000",
-  address: "東京都葛飾区〇〇 〇〇ー〇〇ー〇〇",
+  address: "東京都葛飾区立石５丁目１３-１",
   store_url: "dmm_cafe.com",
   store_info: "東京都墨田区にあるカフェです。店内からはスカイツリーを眺めることができます。オリジナルのコーヒーと和菓子を一緒にお楽しみください."
 )
@@ -47,9 +47,9 @@ ABC_Cafe.assign_attributes(
   store_name: "ABC Cafe",
   password: "password",
   phone_number: "11111111111",
-  address: "東京都墨田区区〇〇 〇〇ー〇〇ー〇〇",
+  address: "愛知県名古屋市中村区名駅１丁目１−４",
   store_url: "abc_cafe.com",
-  store_info: "東京都葛飾区の駅近にあるカフェです。アメリカンダイニングをモチーフにした店内でコーヒーやハンバーガーを召し上がっていただけます。イングリッシュメニューもありますので、海外の方にも人気です。"
+  store_info: "愛知県名古屋市の駅近にあるカフェです。アメリカンダイニングをモチーフにした店内でコーヒーやハンバーガーを召し上がっていただけます。イングリッシュメニューもありますので、海外の方にも人気です。"
 )
 
 ABC_Cafe.store_image.attach(
@@ -63,7 +63,7 @@ Tokyo_Cafe.assign_attributes(
   store_name: "Tokyo Cafe",
   password: "password",
   phone_number: "22222222222",
-  address: "東京都墨田区区〇〇 〇〇ー〇〇ー〇〇",
+  address: "東京都千代田区丸の内1丁目",
   store_url: "tokyo_cafe.com",
   store_info: "日差しが差し込む開放的な店内で洗練されたコーヒーをお楽しみいただけます。店舗オリジナル焙煎のコーヒーを使ったラテが大変人気です。"
 )
