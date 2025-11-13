@@ -1,40 +1,59 @@
 <% if @records.present? && @model == "user" %>
   <div class="d-flex justify-content-end mt-4 mb-2 mr-4">
-    <%= render "searches/search", category_name: "ユーザー名", search_method: @model %>
+    <%= render "admin/searches/search", category_name: "ユーザー名", search_method: @model %>
   </div>
-  <table class="table table-hover table-inverse">
-    <tbody>
-      <% @records.each do |user| %>
+
+  <div class="col-md-10 offset-md-1">
+    <table class="table table-hover table-inverse">
+      <thead>
         <div class="container d-flex justify-content-center mt-4">
           <h2>ユーザー検索結果一覧：<%= @content %></h2>
         </div>
-        <div class="card-list-container py-5">
-          <div class="card w-50 mx-auto mt-4 shadow-lg">
-            <div class="card-body">
-              <div class="row">
-                <div class="col-3">
-                  <% if user.user_image.attached? %>
-                    <%= image_tag user.user_image, size: "100x100" %>
-                  <% else %>
-                    <%= image_tag 'no_image', size: "100x100" %>
-                  <% end %>
-                </div>
-                <div class="col-9">
-                  <%= link_to(user_path(user.id), class: "text-dark") do %>
-                    <strong><span><%= user.name %></span></strong>
-                <% end %>
-                  <p class="card-text"><%= user.email%></p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      <% end %>
-    </tbody>
-  </table>
+        <tr>
+          <th></th>
+          <th>ユーザー名</th>
+          <th>メールアドレス</th>
+          <th>お気に入り店舗</th>
+          <th colspan="3">※フェーズ3で実装予定↓</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @records.each do |user| %>
+          <tr>
+            <th>
+              <% if user.user_image.attached? %>
+                <%= image_tag user.user_image, size: "50x50" %>
+              <% else %>
+                <%= image_tag 'no_image.jpg', size: "50x50" %>
+              <% end %>
+            </th>
+            <th class="align-middle">
+              <%= link_to admin_user_path(user.id), class: "text-dark" do %>
+                <strong><span><%= user.name %></span>
+              <% end %>
+            </th>
+            <th class="align-middle">
+              <%= user.email%>
+            </th>
+            <th class="align-middle">
+              〇
+            </th>
+            <th class="align-middle">
+              公開中 | 非公開中
+            </th>
+            <th class="align-middle">
+              <%= link_to '削除', admin_user_path(user), method: :delete, data: { confirm: '本当にこのユーザーを削除しますか？' } %> 
+            </th>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
 <% elsif @model == "user" %>
   <div class="d-flex justify-content-end mt-4 mb-2 mr-4">
-    <%= render "searches/search", category_name: "ユーザー名", search_method: @model %>
+    <%= render "admin/searches/search", category_name: "ユーザー名", search_method: @model %>
   </div>
   <div class="container d-flex justify-content-center mt-4">
     <h2>ユーザー検索結果一覧：<%= @content %></h2>
@@ -42,44 +61,67 @@
   <div class="container d-flex justify-content-center mt-4">
     <p>検索結果がありません</p>
   </div>
+
 <% elsif @records.present? && @model == "store" %>
   <div class="d-flex justify-content-end mt-4 mb-2 mr-4">
-    <%= render "searches/search", category_name: "店舗名", search_method: @model %>
+    <%= render "admin/searches/search", category_name: "店舗名", search_method: @model %>
   </div>
-  <table class="table table-hover table-inverse">
-    <tbody>
-      <% @records.each do |store| %>
-        <div class="container d-flex justify-content-center mt-4">
-          <h2>店舗検索結果一覧：<%= @content %></h2>
-        </div>
-        <div class="card-list-container py-5">
-          <div class="card w-50 mx-auto mt-4 shadow-lg">
-            <div class="card-body">
-              <div class="row">
-                <div class="col-4">
-                  <% if store.store_image.attached? %>
-                    <%= image_tag store.store_image, size: "150x150" %>
-                  <% end %>
-                </div>
-                <div class="col-8">
-                  <%= link_to(store_path(store.id), class: "text-dark") do %>
-                    <strong><span><%= store.store_name %></span></strong>
-                  <% end %>
-                  <p class="card-text"><%= store.phone_number %></p>
-                  <p class="card-text"><%= store.address %></p>
-                  <p class="card-text"><%= store.store_url %></p>
-                  <p class="card-text"><%= store.store_info %></p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      <% end %>
-    </tbody>
-  </table>
+  <div class="container d-flex justify-content-center my-4">
+    <h2>店舗検索結果一覧：<%= @content %></h2>
+  </div>
+  <div class="col-md-10 offset-md-1">
+    <table class="table table-hover table-inverse">
+      <thead>
+        <tr>
+          <th></th>
+          <th>店舗名</th>
+          <th>住所</th>
+          <th>URL</th>
+          <th colspan="3"></th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @records.each do |store| %>
+          <tr>
+            <th>
+              <% if store.store_image.attached? %>
+                <%= image_tag store.store_image, size: "80x80" %>
+              <% end %>
+            </th>
+            <th class="align-middle">
+              <%= link_to admin_store_path(store.id), class: "text-dark" do %>
+                <strong><span><%= store.store_name %></span></strong>
+              <% end %>
+            </th>
+            <th class="align-middle">
+              <span style="display: inline-block; max-width: 300px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+                <%= store.address %>
+              </span>
+            </th>
+            <th class="align-middle">
+              <span style="display: inline-block; max-width: 300px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+                <%= store.store_url %>
+              </span>
+            </th>
+            <th class="align-middle">
+              <%= link_to favorites_admin_store_path(store) do %>
+                <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>
+                <%= store.favorites.count %> お気に入り
+              <% end %>
+            </th>
+            <th class="align-middle">
+              <%= link_to '削除', admin_store_path(store), method: :delete, data: { confirm: '本当にこの店舗を削除しますか？' } %> 
+            </th>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
 <% else %>
   <div class="d-flex justify-content-end mt-4 mb-2 mr-4">
-    <%= render "searches/search", category_name: "店舗名", search_method: @model %>
+    <%= render "admin/searches/search", category_name: "店舗名", search_method: @model %>
   </div>
   <div class="container d-flex justify-content-center mt-4">
     <h2>店舗検索結果一覧：<%= @content %></h2>
