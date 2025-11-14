@@ -4,6 +4,15 @@ class Admin::PostsController < ApplicationController
   
   def index
     @posts = Post.all.order(created_at: :desc)
+    if params[:latest]
+      @posts = Post.latest
+    elsif params[:old]
+      @posts = Post.old
+    elsif params[:like_count]
+      @posts = Post.like_count
+    else
+      @posts = Post.all
+    end
   end
 
   def show

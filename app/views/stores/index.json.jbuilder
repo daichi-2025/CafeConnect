@@ -2,6 +2,7 @@ json.data do
   json.items do
     json.array!(@stores) do |store|
       json.id store.id
+      
       json.store_image store.store_image
       json.store_name store.store_name
       json.caption store.store_info

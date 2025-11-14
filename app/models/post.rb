@@ -9,6 +9,10 @@ class Post < ApplicationRecord
 
   has_many :likes, dependent: :destroy
 
+  scope :latest, -> {order(created_at: :desc)}
+  scope :old, -> {order(created_at: :asc)}
+  scope :like_count, -> {order(like: :desc)}
+
   def user_liked_by?(user)
     likes.exists?(user_id: user&.id)
   end

@@ -39,11 +39,11 @@
                     <%= post_comment.comment %>
                   </div>
                   <div class="row ml-2 d-flex justify-content-end align-items-end mr-2">
-                    <div class="accept mr-4">
-                      <span>※フェーズ3で実装予定→ 公開中 | 非公開中</span>
-                    </div>
-                    <div class="post_show mr-2">
+                    <div class="post_show mr-4">
                       <%= link_to "投稿詳細", admin_post_path(post_comment.post.id) %>
+                    </div>
+                    <div class="delete">
+                      <%= link_to "削除", admin_post_comment_path(post_comment.id), method: :delete, "data-confirm" => "本当にこのコメントを削除しますか？" %>
                     </div>
                   </div>
                 </div>

@@ -31,7 +31,7 @@ DMM_Cafe.assign_attributes(
   store_name: "DMM Cafe",
   password: "password",
   phone_number: "00000000000",
-  address: "東京都葛飾区立石５丁目１３-１",
+  address: "東京都葛飾区立石1丁目13-1",
   store_url: "dmm_cafe.com",
   store_info: "東京都墨田区にあるカフェです。店内からはスカイツリーを眺めることができます。オリジナルのコーヒーと和菓子を一緒にお楽しみください."
 )

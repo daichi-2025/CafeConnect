@@ -6,6 +6,12 @@
   <h2>店舗一覧</h2>
 </div>
 
+<div class="container d-flex justify-content-center mt-4 mb-2">
+  <%= link_to '新しい順', stores_path(latest: "true"), class: "mr-1" %>
+  |<%= link_to '古い順', stores_path(old: "true"), class: "mx-1" %>
+  |<%= link_to 'お気に入りの多い順', stores_path(favorite_count: "true"), class: "ml-1"  %>
+</div>
+
 <% @stores.each do |store| %>
   <div class="card-list-container">
     <div class="card w-50 mx-auto mt-4 shadow-lg">

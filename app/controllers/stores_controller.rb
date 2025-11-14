@@ -8,6 +8,15 @@ class StoresController < ApplicationController
 
   def index
     @stores = Store.all.order(created_at: :desc)
+    if params[:latest]
+      @stores = Store.latest
+    elsif params[:old]
+      @stores = Store.old
+    elsif params[:star_count]
+      @stores = Store.star_count
+    else
+      @stores = Store.all
+    end
     # respond_to do |format|
     #   format.html do
     #     @stores = Store.page(params[:page])

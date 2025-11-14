@@ -6,6 +6,12 @@
   <h2>店舗一覧</h2>
 </div>
 
+<div class="container d-flex justify-content-center mt-4 mb-2">
+  <%= link_to '新しい順', admin_stores_path(latest: "true"), class: "mr-1" %>
+  |<%= link_to '古い順', admin_stores_path(old: "true"), class: "mx-1" %>
+  |<%= link_to 'お気に入りの多い順', admin_stores_path(favorite_count: "true"), class: "ml-1"  %>
+</div>
+
 <div class="col-md-10 offset-md-1">
   <table class="table table-hover table-inverse">
     <thead>
