@@ -18,11 +18,11 @@
           </div>
           <div class="col-8">
             <%= link_to(store_path(store.id), class: "text-dark") do %>
-              <strong><span><%= store.store_name %></span></strong>
+              <i class="fa-solid fa-flag mr-2 mb-3"></i><strong><span><%= store.store_name %></span></strong>
             <% end %>
-            <p class="card-text"><%= store.phone_number %></p>
-            <p class="card-text"><%= store.address %></p>
-            <p class="card-text"><%= store.store_url %></p>
+            <p class="card-text"><i class="fa-solid fa-phone mr-2"></i><%= store.phone_number %></p>
+            <p class="card-text"><i class="fa-solid fa-location-dot mr-2"></i><%= store.address %></p>
+            <p class="card-text"><i class="fa-solid fa-at mr-2"></i><%= store.store_url %></p>
             <p class="card-text"><%= truncate(store.store_info, length: 60, omission: '...') %></p>
           </div>
         </div>

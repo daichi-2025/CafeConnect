@@ -16,8 +16,8 @@
               <% end %>
             </div>    
             <div class="col-8">
-              <p class="card-text">ユーザー名：<%= @user.name %></p>
-              <p class="card-text">メールアドレス：<%= @user.email %></p>
+              <p class="card-text"><i class="fa-solid fa-user mr-2"></i><%= @user.name %></p>
+              <p class="card-text"><i class="fa-solid fa-envelope mr-2"></i><%= @user.email %></p>
               <%= link_to "お気に入り店舗一覧", favorites_user_path(@user.id) %>
             </div>
           </div>

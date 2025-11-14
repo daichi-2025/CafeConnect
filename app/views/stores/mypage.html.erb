@@ -15,11 +15,11 @@
                 <% end %>
               </div>    
               <div class="col-8">
-                <p class="card-text">店舗名：<%= @store.store_name %></p>
-                <p class="card-text">メールアドレス：<%= @store.email %></p>
-                <p class="card-text">店舗電話番号：<%= @store.phone_number %></p>
-                <p class="card-text">住所：<%= @store.address %></p>
-                <p class="card-text">店舗URL：<%= @store.store_url %></p>
+                <p class="card-text"><i class="fa-solid fa-flag mr-2"></i><%= @store.store_name %></p>
+                <p class="card-text"><i class="fa-solid fa-envelope mr-2"></i><%= @store.email %></p>
+                <p class="card-text"><i class="fa-solid fa-phone mr-2"></i><%= @store.phone_number %></p>
+                <p class="card-text"><i class="fa-solid fa-location-dot mr-2"></i><%= @store.address %></p>
+                <p class="card-text"><i class="fa-solid fa-at mr-2"></i><%= @store.store_url %></p>
                 <%= link_to store_favorites_path(store_id: @store.id) do %>
                   <i class="fas fa-heart" aria-hidden="true"></i>
                   <%= @store.favorites.count %> お気に入り
