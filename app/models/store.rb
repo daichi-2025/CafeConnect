@@ -6,6 +6,8 @@ class Store < ApplicationRecord
 
   validates :store_name, presence: true
   validates :phone_number, allow_blank: true, numericality: {only_integer: true}, length: { in: 10..11 }
+
+  attr_accessor :image
  
   geocoded_by :address
   after_validation :geocode

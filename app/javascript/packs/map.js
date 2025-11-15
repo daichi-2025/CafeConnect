@@ -30,7 +30,6 @@ async function initMap() {
       const storeName = item.store_name;
 
       const storeImage = item.store_image;
-      // const postImage = item.image;
       const address = item.address;
       const caption = item.store_info;
 
@@ -45,7 +44,7 @@ async function initMap() {
       const contentString = `
         <div class="information container p-0">
           <div>
-            <img class="mb-3 d-flex align-items-center" src="${storeImage}" width="100" height="100">
+            <img class="mb-3 d-flex align-items-center" src="${storeImage}" width="100" height="100"> 
           </div>
           <div>
             <p class="lead m-0 font-weight-bold">${storeName}</p>

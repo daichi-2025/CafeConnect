@@ -17,14 +17,18 @@ class StoresController < ApplicationController
     else
       @stores = Store.all
     end
-    # respond_to do |format|
-    #   format.html do
-    #     @stores = Store.page(params[:page])
-    #   end
-    #   format.json do
-    #     @stores = Store.all
-    #   end
-    # end
+    respond_to do |format|
+      format.html do
+        #@stores = Store.all
+      end
+      format.json do
+        @stores = Store.all.map do |store|
+          url = Rails.application.routes.url_helpers.rails_representation_url(store.store_image.variant({}), only_path: true)
+          store.image = url
+          store
+        end
+      end
+    end
   end
 
   def show
