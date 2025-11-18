@@ -8,6 +8,7 @@ class Post < ApplicationRecord
   validates :category, presence: true
 
   has_many :likes, dependent: :destroy
+  has_many :like_users, through: :likes, source: :user
 
   scope :latest, -> {order(created_at: :desc)}
   scope :old, -> {order(created_at: :asc)}

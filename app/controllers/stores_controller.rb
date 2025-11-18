@@ -73,6 +73,13 @@ class StoresController < ApplicationController
     @users = @store.favorite_users
   end
 
+  def likes 
+    @store = Store.find(params[:id])
+    likes = Like.where(store_id: @store.id).pluck(:post_id)
+    @like_posts = Post.find(likes)
+    @post = Post.find(params[:id])
+  end
+
   private
   def store_params
     params.require(:store).permit(:store_image, :store_name, :email, :phone_number, :address, :store_url, :store_info)

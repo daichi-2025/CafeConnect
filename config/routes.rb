@@ -14,8 +14,12 @@ Rails.application.routes.draw do
   namespace :admin do
     root "posts#index"
     resources :admins, only: [:edit, :update]
-    get 'mypage', to: 'admins#mypage'
-    resources :posts, only: [:index, :show, :destroy]
+    get 'mypage', to: 'admins#mypage' 
+    resources :posts, only: [:index, :show, :destroy] do
+      member do
+        get :likes
+      end
+    end
     resources :users, only: [:index, :show, :destroy]
     resources :stores, only: [:index, :show, :destroy] do
       member do
@@ -38,6 +42,7 @@ Rails.application.routes.draw do
   resources :stores do
     member do
       get :favorites
+      get :likes
     end
     resources :favorites, only: [:create, :index]
     resource :favorites, only: [:destroy]

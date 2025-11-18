@@ -26,4 +26,8 @@ class Admin::PostsController < ApplicationController
     redirect_to admin_posts_path, notice: '投稿を削除しました。'
   end
 
+  def likes
+    @post = Post.find(params[:id])
+    @users = @post.like_users
+  end
 end

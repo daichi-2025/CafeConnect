@@ -34,5 +34,4 @@ class Admin::StoresController < ApplicationController
     @store = Store.find(params[:id])
     @users = @store.favorite_users
   end
-
 end

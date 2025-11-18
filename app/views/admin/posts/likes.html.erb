@@ -1,0 +1,48 @@
+<div class="container d-flex justify-content-center my-4">
+  <h2>この投稿をいいねしているユーザー</h2>
+</div>
+
+<div class="col-md-10 offset-md-1">
+  <table class="table table-hover table-inverse">
+    <thead>
+      <tr>
+        <th></th>
+        <th>ユーザー名</th>
+        <th>メールアドレス</th>
+        <th>お気に入り店舗</th>
+        <th colspan="3">※フェーズ3で実装予定↓</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <th>
+            <% if user.user_image.attached? %>
+              <%= image_tag user.user_image, size: "50x50" %>
+            <% else %>
+              <%= image_tag 'no_image.jpg', size: "50x50" %>
+            <% end %>
+          </th>
+          <th class="align-middle">
+            <%= link_to admin_user_path(user.id), class: "text-dark" do %>
+              <strong><span><%= user.name %></span>
+            <% end %>
+          </th>
+          <th class="align-middle">
+            <%= user.email%>
+          </th>
+          <th class="align-middle">
+            〇
+          </th>
+          <th class="align-middle">
+            公開中 | 非公開中
+          </th>
+          <th class="align-middle">
+            <%= link_to '削除', admin_user_path(user), method: :delete, data: { confirm: '本当にこのユーザーを削除しますか？' } %> 
+          </th>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
