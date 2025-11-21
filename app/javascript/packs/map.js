@@ -28,7 +28,7 @@ async function initMap() {
       const latitude = item.latitude;
       const longitude = item.longitude;
       const storeName = item.store_name;
-
+      //const storeEmail = item.email;
       const storeImage = item.store_image;
       const address = item.address;
       const caption = item.store_info;
@@ -40,7 +40,6 @@ async function initMap() {
         // 他の任意のオプションもここに追加可能
       });
 
-      //ここから追記
       const contentString = `
         <div class="information container p-0">
           <div>
@@ -59,6 +58,17 @@ async function initMap() {
       });
       
       marker.addListener("click", () => {
+          // 1. IDがアドレス箇所を取得する
+          //const storeImage = document.getElementById('store_image')
+          const storeName = document.getElementById('store_name')
+          const addressName = document.getElementById('address_name')
+          // 2. 取得した箇所の文字列(or 画像)を置き換える
+          //storeImage.innerHTML = item.store_image
+          storeName.innerHTML = item.store_name
+          addressName.innerHTML = item.address
+
+          console.log(addressName); //デバッグ用なので後で消す
+
           infowindow.open({
           anchor: marker,
           map,

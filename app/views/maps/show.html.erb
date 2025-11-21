@@ -1,13 +1,30 @@
 <div class="container">
   <div class="row mt-4">
-    <div class="col-3">
+    <div class="col-md-4" id="store-details">
+      <div class="card-list-container py-5">
+        <div class="card w-70 mx-auto mt-4 mb-4 shadow-lg">
+          <div class="card-body">
+            <div class="row">
+              <% if false %>
+                <%= image_tag @store.store_image, size: "200x200" %>
+              <% else %>
+                <%= image_tag 'no_image', size: "200x200" %>
+              <% end %> 
+            </div>
+            <div class="row">
+              <p class="card-text"><i class="fa-solid fa-flag mr-2"></i><p id="store_name"></p></p>
+              <p class="card-text"><i class="fa-solid fa-envelope mr-2"></i>email</p>
+              <p class="card-text"><i  class="fa-solid fa-phone mr-2"></i>phone_number</p>
+              <p class="card-text"><i class="fa-solid fa-location-dot mr-2"></i><p id="address_name"></p></p>
+              <p class="card-text"><i class="fa-solid fa-at mr-2"></i>store_url</p>
+              <p class="card-text">store_info</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="col-9">
-      <div id="map"></div>
-    </div>
+    <div class="col-md-8" id="map"></div>
   </div>
 </div>
-
-
 
 <%= javascript_pack_tag 'map', 'data-turbolinks-track': 'reload' %>
