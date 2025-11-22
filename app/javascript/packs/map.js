@@ -23,15 +23,15 @@ async function initMap() {
 
     const { data: { items } } = await response.json();
     if (!Array.isArray(items)) throw new Error("Items is not an array");
-
     items.forEach( item => {
       const latitude = item.latitude;
       const longitude = item.longitude;
       const storeName = item.store_name;
-      //const storeEmail = item.email;
       const storeImage = item.store_image;
+      const phoneNumber = item.phone_number;
       const address = item.address;
-      const caption = item.store_info;
+      const storeUrl = item.store_url;
+      const storeInfo = item.store_info;
 
       const marker = new google.maps.marker.AdvancedMarkerElement ({
         position: { lat: latitude, lng: longitude },
@@ -60,14 +60,18 @@ async function initMap() {
       marker.addListener("click", () => {
           // 1. IDがアドレス箇所を取得する
           //const storeImage = document.getElementById('store_image')
-          const storeName = document.getElementById('store_name')
-          const addressName = document.getElementById('address_name')
+          const storeNameEle = document.getElementById('store_name')
+          const phoneNumberEle = document.getElementById('phone_number')
+          const addressNameEle = document.getElementById('address')
+          const storeUrlEle = document.getElementById('store_url')
+          const storeInfoEle = document.getElementById('store_info')
           // 2. 取得した箇所の文字列(or 画像)を置き換える
           //storeImage.innerHTML = item.store_image
-          storeName.innerHTML = item.store_name
-          addressName.innerHTML = item.address
-
-          console.log(addressName); //デバッグ用なので後で消す
+          storeNameEle.innerHTML = storeName
+          phoneNumberEle.innerHTML = phoneNumber
+          addressNameEle.innerHTML = address
+          storeUrlEle.innerHTML = storeUrl
+          storeInfoEle.innerHTML = storeInfo
 
           infowindow.open({
           anchor: marker,

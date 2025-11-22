@@ -5,8 +5,10 @@ json.data do
       
       json.store_image store.image
       json.store_name store.store_name
-      json.caption store.store_info
+      json.store_info store.store_info
       json.address store.address
+      json.store_url store.store_url
+      json.phone_number store.phone_number
       json.latitude store.latitude
       json.longitude store.longitude
     end  
