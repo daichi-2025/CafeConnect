@@ -59,14 +59,14 @@ async function initMap() {
       
       marker.addListener("click", () => {
           // 1. IDがアドレス箇所を取得する
-          //const storeImage = document.getElementById('store_image')
+          const storeImageEle = document.getElementById('store_image')
           const storeNameEle = document.getElementById('store_name')
           const phoneNumberEle = document.getElementById('phone_number')
           const addressNameEle = document.getElementById('address')
           const storeUrlEle = document.getElementById('store_url')
           const storeInfoEle = document.getElementById('store_info')
           // 2. 取得した箇所の文字列(or 画像)を置き換える
-          //storeImage.innerHTML = item.store_image
+          storeImageEle.src = storeImage
           storeNameEle.innerHTML = storeName
           phoneNumberEle.innerHTML = phoneNumber
           addressNameEle.innerHTML = address
