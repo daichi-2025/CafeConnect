@@ -32,11 +32,20 @@ class StoresController < ApplicationController
   end
 
   def show
-    @store = Store.find(params[:id])
-    @store_name = @store.store_name
-    @store_image = @store.store_image
-    @post = Post.new
-    @posts = @store.posts.order(created_at: :desc)
+    @store = Store.find_by(id: params[:id])
+    if @store
+      @store_name = @store.store_name
+      @store_image = @store.store_image
+      @post = Post.new
+      @posts = @store.posts.order(created_at: :desc)
+    else
+      render 'maps/show'
+    end
+    #@store = Store.find(params[:id])
+    #@store_name = @store.store_name
+    #@store_image = @store.store_image
+    #@post = Post.new
+    #posts = @store.posts.order(created_at: :desc)
   end
 
   def create

@@ -19,7 +19,9 @@
               <%= image_tag 'no_image', size: "200x200", id: "store_image" %>
             </div>
             <div>
-              <div><i class="fa-solid fa-flag mr-2"></i><span id="store_name">store_name</span></div> <%# 店舗詳細のリンク実装 #%>
+              <a href="/stores/0" class="text-dark" id="store_id">
+                <i class="fa-solid fa-flag mr-2"></i><strong><span id="store_name">store_name</span></strong>
+              </a>
               <div><i class="fa-solid fa-location-dot mr-2"></i><span id="address">address</span></div>
               <div><i  class="fa-solid fa-phone mr-2"></i><span id="phone_number">phone_number</span></div>
               <div><i class="fa-solid fa-at mr-2"></i><span id="store_url">store_url</span></div>
