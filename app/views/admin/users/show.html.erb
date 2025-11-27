@@ -18,6 +18,9 @@
             <p class="card-text"><i class="fa-solid fa-envelope mr-2"></i><%= @user.email %></p>
           </div>
         </div>
+        <div class="row justify-content-end mt-2 mr-2">
+          <%= link_to '削除', admin_user_path(@user), method: :delete, data: { confirm: '本当にこのユーザーを削除しますか？' } %> 
+        </div>
       </div>
     </div>
   </div>

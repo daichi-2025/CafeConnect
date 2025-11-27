@@ -3,16 +3,13 @@
 </div>
 
 <% if @users.present? %>
-  <div class="col-md-10 offset-md-1">
+  <div class="col-md-6 offset-md-3">
     <table class="table table-hover table-inverse">
       <thead>
         <tr>
           <th></th>
           <th>ユーザー名</th>
           <th>メールアドレス</th>
-          <th>お気に入り店舗</th>
-          <th colspan="3">※フェーズ3で実装予定↓</th>
-          <th colspan="3"></th>
         </tr>
       </thead>
       <tbody>
@@ -20,9 +17,9 @@
           <tr>
             <th>
               <% if user.user_image.attached? %>
-                <%= image_tag user.user_image, size: "50x50" %>
+                <%= image_tag user.user_image, size: "80x80" %>
               <% else %>
-                <%= image_tag 'no_image.jpg', size: "50x50" %>
+                <%= image_tag 'no_image.jpg', size: "80x80" %>
               <% end %>
             </th>
             <th class="align-middle">
@@ -32,15 +29,6 @@
             </th>
             <th class="align-middle">
               <%= user.email%>
-            </th>
-            <th class="align-middle">
-              〇
-            </th>
-            <th class="align-middle">
-              公開中 | 非公開中
-            </th>
-            <th class="align-middle">
-              <%= link_to '削除', admin_user_path(user), method: :delete, data: { confirm: '本当にこのユーザーを削除しますか？' } %> 
             </th>
           </tr>
         <% end %>
