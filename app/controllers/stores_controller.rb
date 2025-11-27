@@ -85,8 +85,10 @@ class StoresController < ApplicationController
   def likes 
     @store = Store.find(params[:id])
     likes = Like.where(store_id: @store.id).pluck(:post_id)
-    @like_posts = Post.find(likes)
-    @post = Post.find(params[:id])
+    @like_posts = Post.where(id: likes)
+    @post = Post.find_by(id: params[:id])
+    unless @post
+    end
   end
 
   private

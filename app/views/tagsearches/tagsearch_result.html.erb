@@ -7,7 +7,7 @@
     <% if @posts.present? %>
       <% @posts.each do |post| %>
         <div class="container d-flex justify-content-center mt-4">
-          <h2>カテゴリー検索結果一覧：<%= post.category %></h2>
+          <h2>カテゴリー検索結果一覧：<%= @word %></h2>
         </div>
         <% @posts.each do |post| %> 
           <div class="card-list-container py-5">
@@ -37,12 +37,10 @@
                   </div>
                 </div>
                 <div class="row d-flex justify-content-end align-items-end mr-3 mb-3">
-
                   <div class="category mr-4">
                     <span><i class="fa-solid fa-tag"></i>カテゴリー：</span><%= post.category %>
                     <%#=link_to post.category, tagsearches_search_path(content:@post.category) #%>  
                   </div>
-
                   <div class="comment mr-4">
                     <%= link_to "#{post.post_comments.count} コメント", post_path(post.id), class: "text-dark" %>
                   </div>
@@ -52,9 +50,16 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> 
         <% end %>
       <% end %>
+    <% else %>
+      <div class="container d-flex justify-content-center mt-4">
+        <h2>カテゴリー検索結果一覧：<%= @word %></h2>
+      </div>
+      <div class="container d-flex justify-content-center mt-4">
+        <p>検索結果がありません</p>
+      </div>
     <% end %>
   </tbody>
 </table>
