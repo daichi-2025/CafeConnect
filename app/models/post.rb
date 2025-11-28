@@ -12,7 +12,12 @@ class Post < ApplicationRecord
 
   scope :latest, -> {order(created_at: :desc)}
   scope :old, -> {order(created_at: :asc)}
-  scope :like_count, -> {order(like: :desc)}
+  #scope :like_count, -> {order(like: :desc)}
+  scope :like_count, -> {
+    left_joins(:likes)
+    .group('posts.id')
+    .order('COUNT(likes.id) DESC')
+  }
 
   def user_liked_by?(user)
     likes.exists?(user_id: user&.id)
