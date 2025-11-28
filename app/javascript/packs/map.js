@@ -8,7 +8,7 @@ let map;
 
 async function initMap() {
   const { Map } = await google.maps.importLibrary("maps");
-  const {AdvancedMarkerElement} = await google.maps.importLibrary("marker") 
+  const {AdvancedMarkerElement} = await google.maps.importLibrary("marker")
 
   map = new Map(document.getElementById("map"), {
     center: { lat: 35.681236, lng: 139.767125 },
@@ -83,7 +83,7 @@ async function initMap() {
       });
     });
   } catch (error) {
-    console.error('Error fetching or processing post images:', error);
+    console.error('Error fetching or post images:', error);
   }
 }
 
