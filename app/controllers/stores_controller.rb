@@ -26,7 +26,7 @@ class StoresController < ApplicationController
           if store.store_image.attached?
             store.image = rails_blob_path(store.store_image)
           else
-            store.image = asset_path("no_image.jpg")
+            store.image = ""
           end
           store
         end

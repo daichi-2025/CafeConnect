@@ -69,7 +69,9 @@ async function initMap() {
           const storeInfoEle = document.getElementById('store_info')
           // 2. 取得した箇所の文字列(or 画像)を置き換える
           storeIdEle.href = `/stores/${storeId}`
+          if (storeImage != ""){
           storeImageEle.src = storeImage
+          }
           storeNameEle.innerHTML = storeName
           phoneNumberEle.innerHTML = phoneNumber
           addressNameEle.innerHTML = address
