@@ -8,7 +8,8 @@ let map;
 
 async function initMap() {
   const { Map } = await google.maps.importLibrary("maps");
-  const {AdvancedMarkerElement} = await google.maps.importLibrary("marker")
+  const {AdvancedMarkerElement} = await google.maps.importLibrary("marker");
+  const no_image_path = document.getElementById("store_image");
 
   map = new Map(document.getElementById("map"), {
     center: { lat: 35.681236, lng: 139.767125 },
@@ -27,7 +28,12 @@ async function initMap() {
       const latitude = item.latitude;
       const longitude = item.longitude;
       const storeName = item.store_name;
-      const storeImage = item.store_image;
+      let storeImage = "";
+      if (item.store_image != "") {
+        storeImage = item.store_image;
+      } else {
+        storeImage = no_image_path;
+      }
       const phoneNumber = item.phone_number;
       const address = item.address;
       const storeUrl = item.store_url;
@@ -69,9 +75,7 @@ async function initMap() {
           const storeInfoEle = document.getElementById('store_info')
           // 2. 取得した箇所の文字列(or 画像)を置き換える
           storeIdEle.href = `/stores/${storeId}`
-          if (storeImage != ""){
           storeImageEle.src = storeImage
-          }
           storeNameEle.innerHTML = storeName
           phoneNumberEle.innerHTML = phoneNumber
           addressNameEle.innerHTML = address
