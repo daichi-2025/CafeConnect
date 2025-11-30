@@ -23,8 +23,11 @@ class StoresController < ApplicationController
       end
       format.json do
         @stores = Store.all.map do |store|
-          url = Rails.application.routes.url_helpers.rails_representation_url(store.store_image.variant({}), only_path: true)
-          store.image = url
+          if store.store_image.attached?
+            store.image = rails_blob_path(store.store_image)
+          else
+            store.image = asset_path("no_image.jpg")
+          end
           store
         end
       end
