@@ -9,7 +9,7 @@ let map;
 async function initMap() {
   const { Map } = await google.maps.importLibrary("maps");
   const {AdvancedMarkerElement} = await google.maps.importLibrary("marker");
-  const no_image_path = document.getElementById("store_image");
+  const no_image_path = document.getElementById("store_image").src;
 
   map = new Map(document.getElementById("map"), {
     center: { lat: 35.681236, lng: 139.767125 },
