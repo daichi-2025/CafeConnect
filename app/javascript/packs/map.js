@@ -65,7 +65,6 @@ async function initMap() {
       });
 
       marker.addListener("click", () => {
-          // 1. IDがアドレス箇所を取得する
           const storeIdEle = document.getElementById('store_id')
           const storeImageEle = document.getElementById('store_image')
           const storeNameEle = document.getElementById('store_name')
@@ -73,7 +72,7 @@ async function initMap() {
           const addressNameEle = document.getElementById('address')
           const storeUrlEle = document.getElementById('store_url')
           const storeInfoEle = document.getElementById('store_info')
-          // 2. 取得した箇所の文字列(or 画像)を置き換える
+          
           storeIdEle.href = `/stores/${storeId}`
           storeImageEle.src = storeImage
           storeNameEle.innerHTML = storeName
