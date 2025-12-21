@@ -20,8 +20,10 @@
 - 近くの複数店舗の中から自分にあったカフェを比較したい時
 - いつもとは別のカフェを気軽に試してみたい時
 ​
-## 設計書
-後ほど作成予定
+## AWS構成図
+https://drive.google.com/file/d/1U2l2ZDTIGUGCvhPqC9qwTiFZAE7fe3Cy/view?usp=drive_link
+
+##
 ​
 ## 開発環境
 - OS：Linux(CentOS)
