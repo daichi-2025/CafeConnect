@@ -23,8 +23,6 @@
 ## AWS構成図
 https://drive.google.com/file/d/1U2l2ZDTIGUGCvhPqC9qwTiFZAE7fe3Cy/view?usp=drive_link
 
-##
-​
 ## 開発環境
 - OS：Linux(CentOS)
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
