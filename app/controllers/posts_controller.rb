@@ -1,4 +1,7 @@
 class PostsController < ApplicationController
+  before_action :set_post, only: [:edit, :update, :destroy]
+  before_action :authorize_store_post, only: [:edit, :update, :destroy]
+
   def show
     @post = Post.find(params[:id])
     @post_comment = PostComment.new
@@ -29,11 +32,11 @@ class PostsController < ApplicationController
   end
 
   def edit
-    @post = Post.find(params[:id])
+   #@post = Post.find(params[:id])
   end
 
   def update
-    @post = Post.find(params[:id])
+    #@post = Post.find(params[:id])
     if @post.update(post_params)
       redirect_to stores_mypage_path(@post.id)  
     else
@@ -42,12 +45,23 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    post = Post.find(params[:id])  
+    #post = Post.find(params[:id])  
     post.destroy  
     redirect_to stores_mypage_path
   end
 
   private
+  
+  def set_post
+    @post = Post.find(params[:id])
+  end
+
+  def authorize_store_post
+    unless @post.store_id == current_store.id
+      redirect_to posts_path, alert: "他の店舗の投稿は編集できません。"
+    end
+  end
+
   def post_params
     params.require(:post).permit(:title, :body, :post_image, :category)    
   end
