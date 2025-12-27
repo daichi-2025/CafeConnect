@@ -6,53 +6,60 @@
   <div class="row d-flex justify-content-center">
     <h1>CafeConnect</h1>
   </div>
-  <div class="row d-flex justify-content-center">
+  <div class="main_visual_subtitle1 row d-flex justify-content-center">
     <h5>〜カフェとの出会いをもっと楽しく、もっと便利に〜</h5>
   </div>
-  <div class="row d-flex justify-content-center">
+  <div class="main_visual_subtitle2 row d-flex justify-content-center">
     <p>気になるカフェの情報や投稿を調べたり、いいねやコメントができるレビューサイト</p>
   </div>
 </div>
 
-<div class="container d-flex justify-content-center my-4">
-  <h2>店舗投稿一覧</h2>
+<div class="container>
+  <div class="row">
+    <div class="col-sm-12 d-flex justify-content-center my-4">
+      <h2>店舗投稿一覧</h2>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12 d-flex justify-content-center my-2">
+      <%= link_to '新しい順', posts_path(latest: "true"), class: "mr-1" %>
+      |<%= link_to '古い順', posts_path(old: "true"), class: "mx-1" %>
+      |<%= link_to 'いいねの多い順', posts_path(like_count: "true"), class: "mx-1"  %>
+    </div>
+  </div>
+
 </div>
 
-<div class="d-flex justify-content-center mt-4 mb-2">
-  <%= link_to '新しい順', posts_path(latest: "true"), class: "mr-1" %>
-  |<%= link_to '古い順', posts_path(old: "true"), class: "mx-1" %>
-  |<%= link_to 'いいねの多い順', posts_path(like_count: "true"), class: "mx-1"  %>
-</div>
 
-<% @posts.each do |post| %>  
-  <div class="card-list-container">
-    <div class="card w-50 mx-auto mt-4 shadow-lg">
+<div class="row d-flex flex-column">
+  <% @posts.each do |post| %>
+    <div class="col-12 col-sm-6 mx-auto mt-4 shadow-lg">
       <div class="card-body">
         <div class="row">
-          <div class="col-10">
+          <div class="col-12 col-sm-10">
             <%= link_to post_path(post.id), class: "text-dark" do %>
               <strong><span><%= post.title %></span></strong>
             <% end %>
             <p class="card-text mt-3"><%= post.body %></p>
           </div>
-          <div class="col-2">
+          <div class="col-12 col-sm-2 mt-3 mt-sm-0 d-flex justify-content-center">
             <% if post.post_image.attached? %>
-              <%= image_tag post.post_image, class: "card-img-top"; %>
+              <%= image_tag post.post_image, class: "card-img-top w-75"; %>
             <% end %>
           </div>
-        </div>
+        </div>       
         <div class="row">
-          <div class="col-2">
+          <div class="col-4 col-sm-2">
             <%= image_tag post.store.get_store_image(80,80), class: "mt-3 rounded-circle"; %>
           </div>
-          <div class="col-10">
-            <p class="card-title mt-4">
+          <div class="col-8 col-sm-10 mt-4">
             <%= link_to(store_path(post.store.id), class: "text-dark") do %>
               <strong><i class="fa-solid fa-flag mr-1"></i><span><%= post.store.store_name %></span></strong>
             <% end %>
           </div>
         </div>
-        <div class="row d-flex justify-content-end align-items-end mr-3 mb-3">
+        <div class="row d-flex justify-content-end align-items-end mr-3 my-3">
           <div class="created mr-4">
             <%= post.created_at.strftime("%Y-%m-%d") %>
           </div>
@@ -68,5 +75,6 @@
           </div>
         </div>
       </div>
-  </div>
-<% end %>
+    </div>
+  <% end %>
+</div>

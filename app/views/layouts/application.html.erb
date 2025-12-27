@@ -8,6 +8,7 @@
 
     <script src="https://kit.fontawesome.com/6ab161fb74.js" crossorigin="anonymous"></script>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
@@ -86,11 +87,11 @@
 
     <footer class="bg-dark text-white mt-5 pt-5 pb-4">
       <div class="container d-flex justify-content-center">
-        <div class="row no-gutters">
-            <p class="text-white mx-4">気になるカフェを調べたり、いいねやコメントができるレビューサイト。</p>
-            <a href="posts#index" title="Home" class="text-white mx-4">CafeConnect</p>
-            <a href="" title="About" class="text-white mx-4">会社概要</a>
-            <a href="" title="License informations" class="text-white mx-4">プライバシーポリシー</a>
+        <div class="row no-gutters d-flex flex-column flex-sm-row align-items-center justify-content-center text-center text-sm-start">
+          <p class="footer_text text-white my-2 mx-sm-3">気になるカフェを調べたり、いいねやコメントができるレビューサイト。</p>
+          <a href="posts#index" title="Home" class="text-white my-2 mx-sm-3">CafeConnect</a>
+          <a href="" title="About" class="text-white my-2 mx-sm-3">会社概要</a>
+          <a href="" title="License informations" class="text-white my-2 mx-sm-3">プライバシーポリシー</a>
         </div>
       </div>
     </footer>

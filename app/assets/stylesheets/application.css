@@ -13,3 +13,13 @@
  *= require_tree .
  *= require_self
  */
+
+@media screen and (max-width: 425px) {
+  .main_visual_subtitle1 h5 {
+    font-size: 14px;
+  }
+
+  .main_visual_subtitle2 {
+    font-size: 10px;
+  }
+}
