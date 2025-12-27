@@ -28,7 +28,7 @@
               </div>
             </div>
             <div class="row mt-4">
-              <p class="card-text">店舗情報：<%= @store.store_info %></p>
+              <p class="card-text">店舗情報：<%= simple_format(@store.store_info, sanitize: true) %></p>
             </div>
             <div class="row mt-4">
               <div class="col-10"></div>

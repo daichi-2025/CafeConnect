@@ -36,15 +36,13 @@ class UsersController < ApplicationController
   def favorites 
     @user = User.find(params[:id])
     favorites = Favorite.where(user_id: @user.id).pluck(:store_id)
-    @favorite_stores = Store.find(favorites)
-    @store = Store.find(params[:id])
+    @favorite_stores = Store.where(id: favorites)
   end
 
   def likes 
     @user = User.find(params[:id])
     likes = Like.where(user_id: @user.id).pluck(:post_id)
-    @like_posts = Post.find(likes)
-    @post = Post.find(params[:id])
+    @like_posts = Post.where(id: likes)
   end
 
   private
