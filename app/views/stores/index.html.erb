@@ -14,15 +14,15 @@
 
 <% @stores.each do |store| %>
   <div class="card-list-container">
-    <div class="card w-50 mx-auto mt-4 shadow-lg">
+    <div class="card col-10 col-sm-6 mx-auto mt-4 shadow-lg">
       <div class="card-body">
         <div class="row">
-          <div class="col-4">
+          <div class="col-12 mb-2 d-flex justify-content-center col-sm-4">
             <% if store.store_image.attached? %>
               <%= image_tag store.store_image, size: "150x150" %>
             <% end %>
           </div>
-          <div class="col-8">
+          <div class="col-12 col-sm-8">
             <%= link_to(store_path(store.id), class: "text-dark") do %>
               <i class="fa-solid fa-flag mr-2 mb-3"></i><strong><span><%= store.store_name %></span></strong>
             <% end %>
