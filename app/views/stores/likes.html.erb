@@ -7,44 +7,50 @@
 
   <% if @like_posts.present? %>
     <% @like_posts.each do |post| %>  
-      <div class="card-list-container">
-        <div class="card w-50 mx-auto mt-4 shadow-lg">
+      <div class="row">
+        <div class="col-10 col-sm-8 mx-auto mt-4 shadow-lg">
           <div class="card-body">
             <div class="row">
-              <div class="col-10">
+              <div class="col-12 col-sm-10">
                 <%= link_to post_path(post.id), class: "text-dark" do %>
                   <strong><span><%= post.title %></span></strong>
                 <% end %>
-                <p class="card-text mt-3"><%= post.body %></p>
+                <p class="card-text mt-3 mb-2"><%= post.body %></p>
               </div>
-              <div class="col-2">
+              <div class="col-12 d-flex justify-content-center col-sm-2">
                 <% if post.post_image.attached? %>
                   <%= image_tag post.post_image, class: "card-img-top"; %>
                 <% end %>
               </div>
             </div>
-            <div class="row">
-              <div class="col-2">
-                <%= image_tag post.store.get_store_image(80,80), class: "mt-3 rounded-circle"; %>
+            <div class="d-flex align-items-start">
+              <div>
+                <%= image_tag post.store.get_store_image(80,80),
+                  class: "mt-3 rounded-circle mr-3" %>
               </div>
-              <div class="col-10">
-                <p class="card-title mt-4">
+              <div class="mt-4">
                 <%= link_to(store_path(post.store.id), class: "text-dark") do %>
-                  <strong><i class="fa-solid fa-flag mr-1"></i><span><%= post.store.store_name %></span></strong>
+                  <strong>
+                    <i class="fa-solid fa-flag mr-1"></i>
+                    <span><%= post.store.store_name %></span>
+                  </strong>
                 <% end %>
               </div>
             </div>
-            <div class="row d-flex justify-content-end align-items-end mr-3 mb-3">
-              <div class="created mr-4">
+            <div class="d-flex flex-column flex-sm-row justify-content-sm-end align-items-end mr-3 mb-3">
+              <div class="created mb-1 mb-sm-0 mr-sm-4">
                 <%= post.created_at.strftime("%Y-%m-%d") %>
               </div>
-              <div class="category mr-4">
-                <span><i class="fa-solid fa-tag mr-1"></i>カテゴリー：</span><%= post.category %>
-                <%#=link_to post.category, tagsearches_search_path(content:@post.category) content?→body? controllerの記述も #%>  
+
+              <div class="category mb-1 mb-sm-0 mr-sm-4 text-right">
+                <i class="fa-solid fa-tag mr-1"></i>
+                カテゴリー：<%= post.category %>
               </div>
-              <div class="comment mr-4">
-                <%= link_to "#{post.post_comments.count} コメント", post_path(post.id)%>
+
+              <div class="comment mb-1 mb-sm-0 mr-sm-4">
+                <%= link_to "#{post.post_comments.count} コメント", post_path(post.id) %>
               </div>
+
               <div class="like">
                 <%= render "likes/btn", post: post %>
               </div>
