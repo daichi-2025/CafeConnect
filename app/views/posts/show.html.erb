@@ -1,86 +1,91 @@
-<div class="container d-flex justify-content-center mt-4">
-  <h2>投稿詳細</h2>
-</div>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 d-flex justify-content-center mt-4">
+      <h2>投稿詳細</h2>
+    </div>
+  </div>   
 
-<div class="card-list-container py-5">
-  <div class="card w-50 mx-auto mt-4 mb-4 shadow-lg">
-    <div class="card-body">
-      <div class="row">
-        <div class="col-9">
-          <p class="card-text"><strong><%= @post.title %></p></strong>
-          <p class="card-text"><%= @post.body %></p>
-        </div>    
-        <div class="col-3">
-          <% if @post.post_image.attached? %>
-            <%= image_tag @post.post_image, size: "170x170" %>
+  <div class="row py-5">
+    <div class="col-10 col-sm-8 mx-auto my-4 shadow-lg">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-sm-9 mb-2">
+            <p class="card-text"><strong><%= @post.title %></p></strong>
+            <p class="card-text"><%= @post.body %></p>
+          </div>    
+          <div class="col-12 d-flex justify-content-center col-sm-3">
+            <% if @post.post_image.attached? %>
+              <%= image_tag @post.post_image, size: "170x170" %>
+            <% else %>
+              <%= image_tag 'no_image.jpg', size: "170x170" %>
+            <% end %>
+          </div>
+        </div>
+        <% if current_store == @post.store %>
+          <div class="row d-flex justify-content-end align-items-end mt-4 mr-3">
+            <div class="edit mr-2">
+              <%= link_to "編集", edit_post_path(@post.id) %> 
+            </div>
+            <div class="delete">
+              <%= link_to "削除", post_path(@post.id), method: :delete, "data-confirm" => "本当にこの投稿を削除しますか？" %>
+            </div>
+          </div>
+        <% end %>
+        <div class= "row align-items-end mt-4">
+          <%= image_tag @post.store.get_store_image(80,80), class: "rounded-circle mr-4"; %>
+          <%= link_to(store_path(@post.store.id), class: "text-dark mb-3 mr-4") do %>
+            <strong><i class="fa-solid fa-flag mr-1"></i><span><%= @post.store.store_name %></span></strong>
+          <% end %>
+          <p class="created mr-4"><%= @post.created_at.strftime("%Y-%m-%d")%></p>
+          <p class="category mr-4"><i class="fa-solid fa-tag mr-1"></i>カテゴリー：<%= @post.category%></p>
+          <p class="like mr-4"><%= render "likes/btn", post: @post %></p>
+        </div>
+        <div class="row mt-4">
+          <% if user_signed_in? || store_signed_in? %>
+            <%= form_with model: [@post, @post_comment] do |f| %>
+              <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
+              <%= f.submit "送信する" %>
+            <% end %>
           <% else %>
-            <%= image_tag 'no_image.jpg', size: "170x170" %>
+            <strong><p>※※※ コメントの投稿には新規登録/ログインが必要です ※※※</p></strong>
           <% end %>
         </div>
-      </div>
-      <% if current_store == @post.store %>
-        <div class="row d-flex justify-content-end align-items-end mt-4 mr-3">
-          <div class="edit mr-2">
-            <%= link_to "編集", edit_post_path(@post.id) %> 
-          </div>
-          <div class="delete">
-            <%= link_to "削除", post_path(@post.id), method: :delete, "data-confirm" => "本当にこの投稿を削除しますか？" %>
-          </div>
+        <div class="row mt-4">
+          <p>コメント件数：<%= @post.post_comments.count %></p>
         </div>
-      <% end %>
-      <div class= "row align-items-end mt-4">
-        <%= image_tag @post.store.get_store_image(80,80), class: "rounded-circle mr-4"; %>
-        <%= link_to(store_path(@post.store.id), class: "text-dark mb-3 mr-4") do %>
-          <strong><i class="fa-solid fa-flag mr-1"></i><span><%= @post.store.store_name %></span></strong>
-        <% end %>
-        <p class="created mr-4"><%= @post.created_at.strftime("%Y-%m-%d")%></p>
-        <p class="category mr-4"><i class="fa-solid fa-tag mr-1"></i>カテゴリー：<%= @post.category%></p>
-        <p class="like mr-4"><%= render "likes/btn", post: @post %></p>
-      </div>
-      <div class="row mt-4">
-        <% if user_signed_in? || store_signed_in? %>
-          <%= form_with model: [@post, @post_comment] do |f| %>
-            <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
-            <%= f.submit "送信する" %>
-          <% end %>
-        <% else %>
-          <strong><p>※※※ コメントの投稿には新規登録/ログインが必要です ※※※</p></strong>
-        <% end %>
-      </div>
-      <div class="row mt-4">
-        <p>コメント件数：<%= @post.post_comments.count %></p>
-      </div>
-      <div class="row mt-4">
-        <% @post.post_comments.each do |post_comment| %>
-          <div class="col-2 mb-4">
-            <% if post_comment.user %>
-              <%= image_tag post_comment.user.get_user_image(70,70) %>
-            <% elsif post_comment.store %>
-              <%= image_tag post_comment.store.get_store_image(70,70) %>
-            <% end %>
-          </div>
-          <div class="col-10">
-            <div class="row ml-2">
+        <div class="row mt-4">
+          <% @post.post_comments.each do |post_comment| %>
+            <div class="col-3 col-sm-2 mb-4">
               <% if post_comment.user %>
-                <span class="name mr-4"><%= post_comment.user.name %></span>
+                <%= image_tag post_comment.user.get_user_image(70,70) %>
               <% elsif post_comment.store %>
-                <span class="name mr-4"><%= post_comment.store.store_name %></span>
+                <%= image_tag post_comment.store.get_store_image(70,70) %>
               <% end %>
-              <%= post_comment.created_at.strftime('%Y-%m-%d') %>
             </div>
-            <div class="row ml-2">
-              <%= post_comment.comment %>
-            </div>
-            <% if (current_user && current_user == post_comment.user) || (current_store && current_store == post_comment.store) %>
-              <div class="row d-flex justify-content-end align-items-end mt-4 mr-3">
-                <div class="delete">
-                  <%= link_to "削除", post_post_comment_path(@post, post_comment), method: :delete, "data-confirm" => "本当にこのコメントを削除しますか？" %>
-                </div>
+            <div class="col-9 col-sm-10">
+              <div class="row ml-2">
+                <% if post_comment.user %>
+                  <span class="name mr-4"><%= post_comment.user.name %></span>
+                <% elsif post_comment.store %>
+                  <span class="name mr-4"><%= post_comment.store.store_name %></span>
+                <% end %>
+                <%= post_comment.created_at.strftime('%Y-%m-%d') %>
               </div>
-            <% end %>
-          </div>
-        <% end %>
+              <div class="row ml-2">
+                <%= post_comment.comment %>
+              </div>
+              <% if (current_user && current_user == post_comment.user) || (current_store && current_store == post_comment.store) %>
+                <div class="row d-flex justify-content-end align-items-end mt-2 mr-3">
+                  <div class="delete">
+                    <%= link_to "削除", post_post_comment_path(@post, post_comment), method: :delete, "data-confirm" => "本当にこのコメントを削除しますか？" %>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
+
 </div>
