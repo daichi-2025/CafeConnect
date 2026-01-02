@@ -1,40 +1,41 @@
-<div class="container d-flex justify-content-center my-4">
-  <h2><%= @store.store_name %>をお気に入りしているユーザー</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 d-flex justify-content-center my-4">
+      <h2><%= @store.store_name %>をお気に入りしているユーザー</h2>
+    </div>
+  </div>
+  <div class="row">
+    <% if @users.present? %>
+      <div class="col-10 col-sm-6 mx-auto">
+        <table class="table table-hover table-inverse">
+          <thead>
+            <tr>
+              <th></th>
+              <th>ユーザー名</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @users.each do |user| %>
+              <tr>
+                <th>
+                  <% if user.user_image.attached? %>
+                    <%= image_tag user.user_image, size: "70x70" %>
+                  <% else %>
+                    <%= image_tag 'no_image.jpg', size: "70x70" %>
+                  <% end %>
+                </th>
+                <th class="align-middle">
+                  <strong><span><%= user.name %></span></strong>
+                </th>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    <% else %>
+      <div class="col-12 d-flex justify-content-center mt-4">
+        <p><%= @store.store_name %>をお気に入りしているユーザーはいません</p>
+      </div>
+    <% end %>
+  </div>
 </div>
-
-<% if @users.present? %>
-  <div class="col-md-6 offset-md-3">
-    <table class="table table-hover table-inverse">
-      <thead>
-        <tr>
-          <th></th>
-          <th>ユーザー名</th>
-          <th colspan="3"></th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @users.each do |user| %>
-          <tr>
-            <th>
-              <% if user.user_image.attached? %>
-                <%= image_tag user.user_image, size: "70x70" %>
-              <% else %>
-                <%= image_tag 'no_image.jpg', size: "70x70" %>
-              <% end %>
-            </th>
-            <th class="align-middle">
-              <strong><span><%= user.name %></span></strong>
-            </th>
-            <th class="align-middle">
-              <span>DM</span>
-            </th>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
-<% else %>
-  <div class="container d-flex justify-content-center mt-4">
-    <p><%= @store.store_name %>をお気に入りしているユーザーはいません</p>
-  </div>
-<% end %>
