@@ -29,13 +29,13 @@
           <div class="input-group mb-3">
             <%= f.text_area :body, class: "form-control", rows: "3", placeholder: "本文" %>
           </div>
-          <div class="row mb-3">
-            <div class= col-3>
+          <div class="d-flex flex-column flex-sm-row mb-3">
+            <div class="mb-2 mb-sm-0 mr-sm-3">
               <% if @post.post_image.attached? %>
                 <%= image_tag @post.post_image, size: "100x100" %>
               <% end %>
             </div>
-            <div class= col-9 d-flex justify-content-end align-items-end>
+            <div class="flex-fill">
               <%= f.file_field :post_image, accept: "image/*", class: "w-100" %>
             </div>
           </div>

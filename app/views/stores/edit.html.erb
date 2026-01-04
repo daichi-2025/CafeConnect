@@ -14,14 +14,16 @@
           </ul>
         <% end %>
         <%= form_with model: @store, url: store_path(@store.id), method: :patch do |f| %>
-          <div class="row">
-            <div class="col-3">
-              <% if @store.store_image.attached? %>
-                <%= image_tag @store.store_image, size: "150x150" %>
-              <% end %>
-            </div>
-            <div class="col-9">
-              <%= f.file_field :store_image, accept: "image/*", class: "w-100" %>
+          <div class="row px-3">
+            <div class="d-flex flex-column flex-sm-row mb-3">
+              <div class="mb-2 mb-sm-0 mr-sm-3 text-center text-sm-left">
+                <% if @store.store_image.attached? %>
+                  <%= image_tag @store.store_image, size: "150x150" %>
+                <% end %>
+              </div>
+              <div class="flex-fill">
+                <%= f.file_field :store_image, accept: "image/*", class: "w-100" %>
+              </div>
             </div>
           </div>
           <div class="input-group mb-3 mt-4">
