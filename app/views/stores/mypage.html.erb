@@ -1,118 +1,120 @@
-<main>
-  <div class="container d-flex justify-content-center my-4">
-    <h2>店舗マイページ</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 d-flex justify-content-center my-4">
+      <h2>店舗マイページ</h2>
+    </div>
   </div>
-    <% if store_signed_in? %>
-      <div class="card-list-container">
-        <div class="card w-50 mx-auto mt-4 mb-4 shadow-lg">
-          <div class="card-body">
-            <div class="row">
-              <div class="col-4">
-                <% if @store.store_image.attached? %>
-                  <%= image_tag @store.store_image, size: "200x200" %>
-                <% else %>
-                  <%= image_tag 'no_image.jpg', size: "150x150" %>
-                <% end %>
-              </div>    
-              <div class="col-8">
-                <p class="card-text"><i class="fa-solid fa-flag mr-2"></i><%= @store.store_name %></p>
-                <p class="card-text"><i class="fa-solid fa-envelope mr-2"></i><%= @store.email %></p>
-                <p class="card-text"><i class="fa-solid fa-phone mr-2"></i><%= @store.phone_number %></p>
-                <p class="card-text"><i class="fa-solid fa-location-dot mr-2"></i><%= @store.address %></p>
-                <p class="card-text"><i class="fa-solid fa-at mr-2"></i><%= @store.store_url %></p>
-                <p class="card-text"><i class="fa-solid fa-thumbs-up mr-2"></i><%= link_to "いいね投稿一覧", likes_store_path(@store.id) %></p>
-                <%= link_to store_favorites_path(store_id: @store.id) do %>
-                  <i class="fas fa-heart" aria-hidden="true"></i>
-                  <%= @store.favorites.count %> お気に入り
-                <% end %>
-              </div>
+  <% if store_signed_in? %>
+    <div class="row">
+      <div class="col-10 col-sm-8 mx-auto my-4 shadow-lg">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-sm-4 d-flex justify-content-center mb-2">
+              <% if @store.store_image.attached? %>
+                <%= image_tag @store.store_image, size: "200x200" %>
+              <% else %>
+                <%= image_tag 'no_image.jpg', size: "150x150" %>
+              <% end %>
+            </div>    
+            <div class="col-sm-8">
+              <p class="card-text"><i class="fa-solid fa-flag mr-2"></i><%= @store.store_name %></p>
+              <p class="card-text"><i class="fa-solid fa-envelope mr-2"></i><%= @store.email %></p>
+              <p class="card-text"><i class="fa-solid fa-phone mr-2"></i><%= @store.phone_number %></p>
+              <p class="card-text"><i class="fa-solid fa-location-dot mr-2"></i><%= @store.address %></p>
+              <p class="card-text"><i class="fa-solid fa-at mr-2"></i><%= @store.store_url %></p>
+              <p class="card-text"><i class="fa-solid fa-thumbs-up mr-2"></i><%= link_to "いいね投稿一覧", likes_store_path(@store.id) %></p>
+              <%= link_to store_favorites_path(store_id: @store.id) do %>
+                <i class="fas fa-heart" aria-hidden="true"></i>
+                <%= @store.favorites.count %> お気に入り
+              <% end %>
             </div>
-            <div class="row mt-4">
-              <p class="card-text">店舗情報：<%= simple_format(@store.store_info, sanitize: true) %></p>
-            </div>
-            <div class="row mt-4">
-              <div class="col text-right">
-                <%= link_to "編集", edit_store_path(@store.id), data: {turbolinks: "false"}, class: "btn btn-primary mr-2" %>
-                <%= link_to "退会", store_path(@store.id), method: :delete, "data-confirm" => "本当に退会しますか？", class: "btn btn-danger" %>
-              </div>
+          </div>
+          <div class="row mt-4">
+            <p class="card-text">店舗情報：<%= simple_format(@store.store_info, sanitize: true) %></p>
+          </div>
+          <div class="row mt-4">
+            <div class="col text-right">
+              <%= link_to "編集", edit_store_path(@store.id), data: {turbolinks: "false"}, class: "btn btn-primary mr-2" %>
+              <%= link_to "退会", store_path(@store.id), method: :delete, "data-confirm" => "本当に退会しますか？", class: "btn btn-danger" %>
             </div>
           </div>
         </div>
       </div>
-    <% end %>
-
-  <div class="container">
-    <div class="row no-gutters">
-      <div class="col-md-8 col-sm-10 mx-2 mx-sm-auto shadow-lg rounded px-0 my-5 text-center">
-        <h5 class="text-dark bg-light p-4 mb-0">新規投稿フォーム</h5>
-        <div class="form-body p-4">
-          <% if @post.errors.any? %>
-            <ul class="alert alert-danger" role="alert">
-              <h6 class="alert-heading">
-                <%= @post.errors.count %>件のエラーが発生しました
-              </h6>
-              <% @post.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-              <% end %>
-            </ul>
-          <% end %>
-          <%= form_with model: @post do |f| %>
-            <div class="input-group mb-3 mt-4">
-              <div class="input-group-prepend">
-                <span class="input-group-text" aria-hidden="true"><i class="fas fa-building"></i></span>
-              </div>
-              <%= f.text_field :title, class: "form-control", placeholder: "タイトル" %>
+    </div>
+  <% end %>
+  <div class="row no-gutters">
+    <div class="col-10 col-sm-8 mx-auto shadow-lg rounded my-5 text-center">
+      <h5 class="text-dark bg-light p-4 mb-0">新規投稿フォーム</h5>
+      <div class="form-body p-4">
+        <% if @post.errors.any? %>
+          <ul class="alert alert-danger" role="alert">
+            <h6 class="alert-heading">
+              <%= @post.errors.count %>件のエラーが発生しました
+            </h6>
+            <% @post.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        <% end %>
+        <%= form_with model: @post do |f| %>
+          <div class="input-group mb-3 mt-4">
+            <div class="input-group-prepend">
+              <span class="input-group-text" aria-hidden="true"><i class="fas fa-building"></i></span>
             </div>
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text" aria-hidden="true"><i class="fa-solid fa-tag"></i></span>
-              </div>
-              <%= f.text_field :category, class: 'form-control post_category', placeholder: "カテゴリー" %>
+            <%= f.text_field :title, class: "form-control", placeholder: "タイトル" %>
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" aria-hidden="true"><i class="fa-solid fa-tag"></i></span>
             </div>
-            <div class="input-group mb-3">
-              <%= f.text_area :body, class: "form-control", rows: "3", placeholder: "本文" %>
-            </div>
-            <div class="image-group mb-3">
-              <%= f.file_field :post_image, accept: "image/*", class: "w-100" %>
-            </div>
-            <%= f.submit '投稿', class: "btn btn-lg btn-block btn-info mt-4" %>
-          <% end %>
-        </div>
+            <%= f.text_field :category, class: 'form-control post_category', placeholder: "カテゴリー" %>
+          </div>
+          <div class="input-group mb-3">
+            <%= f.text_area :body, class: "form-control", rows: "3", placeholder: "本文" %>
+          </div>
+          <div class="image-group mb-3">
+            <%= f.file_field :post_image, accept: "image/*", class: "w-100" %>
+          </div>
+          <%= f.submit '投稿', class: "btn btn-lg btn-block btn-info mt-4" %>
+        <% end %>
       </div>
     </div>
   </div>
   
-  <div class="container d-flex justify-content-center mt-4">
-    <h2>投稿一覧</h2>
-  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 d-flex justify-content-center my-4">
+        <h2>投稿一覧</h2>
+      </div>
+    </div>
     <% if @posts.present? %>
       <% @posts.each do |post| %>  
-        <div class="card-list-container py-1">
-          <div class="card w-50 mx-auto mt-4 shadow-lg">
+        <div class="row py-1">
+          <div class="col-10 col-sm-8 mx-auto mt-4 shadow-lg">
             <div class="card-body">
               <div class="row">
-                <div class="col-10">
+                <div class="col-12 col-sm-10">
                   <%= link_to post_path(post.id), class: "text-dark" do %>
                     <strong><span><%= post.title %></span></strong>
                   <% end %>
                   <p class="card-text mt-3"><%= post.body %></p>
                 </div>
-                <div class="col-2">
+                <div class="col-12 col-sm-2 mt-3 mt-sm-0 d-flex justify-content-center">
                   <% if post.post_image.attached? %>
                     <%#= image_tag post.post_image, size: "20x20" #%>
                     <%= image_tag post.post_image, class: "card-img-top"; %>
                   <% end %>
                 </div>
               </div>
-              <div class="row d-flex justify-content-end align-items-end mr-3 mt-3">
-                <div class="created mr-4">
+              <div class="row d-flex flex-column flex-sm-row justify-content-end align-items-end mr-3 mt-3">
+                <div class="created mr-0 mr-sm-4">
                   <%= post.created_at.strftime("%Y-%m-%d") %>
                 </div>
-                <div class="category mr-4">
+                <div class="category mr-0 mr-sm-4">
                   <span><i class="fa-solid fa-tag"></i>カテゴリー：</span><%= post.category %>
                   <%#=link_to post.category, tagsearches_search_path(content:@post.category) content?→body? controllerの記述も #%>  
                 </div>
-                <div class="comment mr-4">
+                <div class="comment mr-0 mr-sm-4">
                   <%= link_to "#{post.post_comments.count} コメント", post_path(post.id)%>
                 </div>
                 <div class="like">
@@ -128,5 +130,5 @@
         <p>投稿はまだありません</p>
       </div>
     <% end %>
-</main>
-
+  </div>
+</div>
