@@ -1,31 +1,34 @@
-<div class="container d-flex justify-content-center mt-4">
-  <h2>お気に入り店舗一覧</h2>
-</div>
-
-<% @favorite_stores.each do |store| %>
-  <div class="card-list-container py-4">
-    <div class="card w-50 mx-auto shadow-lg">
-      <div class="card-body">
-        <div class="row">
-          <div class="col-4">
-            <% if store.store_image.attached? %>
-              <%= image_tag store.store_image, size: "150x150" %>
-            <% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-12 d-flex justify-content-center mt-4">
+      <h2>お気に入り店舗一覧</h2>
+    </div>
+  </div>
+  <% @favorite_stores.each do |store| %>
+    <div class="row py-4">
+      <div class="col-10 col-sm-8 mx-auto shadow-lg">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-12 mb-2 d-flex justify-content-center col-sm-4">
+              <% if store.store_image.attached? %>
+                <%= image_tag store.store_image, size: "150x150" %>
+              <% end %>
+            </div>
+            <div class="col-12 col-sm-8">
+              <%= link_to(store_path(store.id), class: "text-dark") do %>
+                <i class="fa-solid fa-flag mr-2 mb-3"></i><strong><span><%= store.store_name %></span></strong>
+              <% end %>
+              <p class="card-text"><i class="fa-solid fa-phone mr-2"></i><%= store.phone_number %></p>
+              <p class="card-text"><i class="fa-solid fa-location-dot mr-2"></i><%= store.address %></p>
+              <p class="card-text"><i class="fa-solid fa-at mr-2"></i><%= store.store_url %></p>
+              <p class="card-text"><%= truncate(store.store_info, length: 60, omission: '...') %></p>
+            </div>
           </div>
-          <div class="col-8">
-            <%= link_to(store_path(store.id), class: "text-dark") do %>
-              <strong><span><%= store.store_name %></span></strong>
-            <% end %>
-            <p class="card-text"><%= store.phone_number %></p>
-            <p class="card-text"><%= store.address %></p>
-            <p class="card-text"><%= store.store_url %></p>
-            <p class="card-text"><%= truncate(store.store_info, length: 60, omission: '...') %></p>
+          <div class="row justify-content-end mt-2 mr-2">
+            <%= render "favorites/btn", store: store %>
           </div>
-        </div>
-        <div class="row justify-content-end mt-2 mr-2">
-          <%= render "favorites/btn", store: store %>
         </div>
       </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
+</div>
