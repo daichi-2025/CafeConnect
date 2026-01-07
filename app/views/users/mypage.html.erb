@@ -4,11 +4,11 @@
   </div>
 
   <% if user_signed_in? %>
-    <div class="row justify-content-center">
+    <div class="row d-flex justify-content-center">
       <div class="col-10 col-sm-8">
         <div class="card mt-4 mb-4 shadow-lg">
           <div class="card-body">
-            <div class="row row align-items-center">
+            <div class="row align-items-center">
               <div class="col-12 col-sm-4 mb-2 text-center">
                 <% if @user.user_image.attached? %>
                   <%= image_tag @user.user_image, size: "150x150" %>
