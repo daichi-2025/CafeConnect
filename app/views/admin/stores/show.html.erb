@@ -1,19 +1,21 @@
-<main>
-  <div class="container d-flex justify-content-center mt-4">
-    <h2>店舗詳細</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-12 d-flex justify-content-center mt-4">
+      <h2>店舗詳細</h2>
+    </div>
   </div>
-  <div class="card-list-container py-5">
-    <div class="card w-50 mx-auto mt-4 mb-4 shadow-lg">
+  <div class="row py-5">
+    <div class="col-10 col-sm-8 mx-auto my-4 shadow-lg">
       <div class="card-body">
         <div class="row">
-          <div class="col-4">
+          <div class="col-12 d-flex justify-content-center mb-2 col-sm-4">
             <% if @store.store_image.attached? %>
               <%= image_tag @store.store_image, size: "200x200" %>
             <% else %>
               <%= image_tag 'no_image', size: "200x200" %>
             <% end %>
           </div>    
-          <div class="col-8">
+          <div class="col-12 col-sm-8">
             <p class="card-text"><i class="fa-solid fa-flag mr-2"></i><%= @store.store_name %></p>
             <p class="card-text"><i class="fa-solid fa-envelope mr-2"></i><%= @store.email %></p>
             <p class="card-text"><i class="fa-solid fa-phone mr-2"></i><%= @store.phone_number %></p>
@@ -21,20 +23,21 @@
             <p class="card-text"><i class="fa-solid fa-at mr-2"></i><%= @store.store_url %></p>
           </div>
         </div>
-        <div class="row mt-4">
-          <p class="card-text"><%= @store.store_info %></p>
+        <div class="row mt-sm-4">
+          <p class="card-text"><%= simple_format(@store.store_info, sanitize: true) %></p>
         </div>
       </div>
     </div>
   </div>
-
-  <div class="container d-flex justify-content-center mt-4">
-    <h2>投稿一覧</h2>
+  <div class="row">
+    <div class="col-12 d-flex justify-content-center mt-4">
+      <h2>投稿一覧</h2>
+    </div>
   </div>
     <% if @posts.present? %>
       <% @posts.each do |post| %>  
-        <div class="card-list-container py-1">
-          <div class="card w-50 mx-auto mt-4 shadow-lg">
+        <div class="row py-1">
+          <div class="col-10 col-sm-8 mx-auto mt-4 shadow-lg">
             <div class="card-body">
               <div class="row">
                 <div class="col-10">
@@ -63,5 +66,5 @@
         <p>投稿はまだありません</p>
       <div>
     <% end %>
-</main>
+<div>
 
