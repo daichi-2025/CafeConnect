@@ -14,13 +14,13 @@
           </ul>
         <% end %>
         <%= form_with model: [:admin, @admin] do |f| %>
-          <div class="row">
-            <div class="col-3">
+          <div class="row d-flex flex-column flex-sm-row justify-content-center justify-content-sm-start mb-3 text-center text-sm-start">
+            <div class="col-12 col-sm-3 mb-3 mb-sm-0">
               <% if @admin.admin_image.attached? %>
                 <%= image_tag @admin.admin_image, size: "150x150" %>
               <% end %>
             </div>
-            <div class="col-9">
+            <div class="col-12 col-sm-9 d-flex  justify-content-center justify-content-sm-start">
               <%= f.file_field :admin_image, accept: "image/*", class: "w-100" %>
             </div>
           </div>

@@ -9,7 +9,7 @@
         <div class="card mx-auto shadow-lg">
           <div class="card-body">
             <% if @admin.present? %>
-              <div class="row align-items-center">
+              <div class="row">
                 <div class="col-12 col-sm-4 mb-2 text-center">
                   <% if @admin.admin_image.attached? %>
                     <%= image_tag @admin.admin_image, size: "150x150" %>
@@ -17,9 +17,9 @@
                     <%= image_tag 'no_image.jpg', size: "150x150" %>
                   <% end %>
                 </div>    
-                <div class="col-12 col-sm-8 ">
-                  <p class="card-text">管理者名：<%= @admin.admin_name %></p>
-                  <p class="card-text">メールアドレス：<%= @admin.email %></p>
+                <div class="col-12 col-sm-8 mt-3 mt-sm-3">
+                  <p class="card-text"><i class="fa-solid fa-user mr-2"></i><%= @admin.admin_name %></p>
+                  <p class="card-text"><i class="fa-solid fa-envelope mr-2"></i><%= @admin.email %></p>
                 </div>
               </div>
               <div class="row d-flex justify-content-end align-items-end mt-4 mr-2">

@@ -1,56 +1,65 @@
-<main>
-  <div class="container d-flex justify-content-center mt-4">
+<div class="container">
+
+  <div class="row d-flex justify-content-center mt-4">
     <h2>ユーザー詳細</h2>
   </div>
-  <div class="card-list-container py-5">
-    <div class="card w-50 mx-auto mt-4 mb-4 shadow-lg">
-      <div class="card-body">
-        <div class="row">
-          <div class="col-4">
-            <% if @user.user_image.attached? %>
-              <%= image_tag @user.user_image, size: "200x200" %>
-            <% else %>
-              <%= image_tag 'no_image', size: "200x200" %>
-            <% end %>
-          </div>    
-          <div class="col-8">
-            <p class="card-text"><i class="fa-solid fa-envelope mr-2"></i><%= @user.name %></p>
-            <p class="card-text"><i class="fa-solid fa-envelope mr-2"></i><%= @user.email %></p>
+
+  <div class="row d-flex justify-content-center">
+    <div class="col-10 col-sm-8">
+      <div class="card mt-4 mb-4 shadow-lg">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-12 col-sm-4 mb-2 text-center">
+              <% if @user.user_image.attached? %>
+                <%= image_tag @user.user_image, size: "150x150" %>
+              <% else %>
+                <%= image_tag 'no_image', size: "150x150" %>
+              <% end %>
+            </div>    
+            <div class="col-12 col-sm-8 mt-3 mt-sm-0">
+              <p class="card-text"><i class="fa-solid fa-user mr-2"></i><%= @user.name %></p>
+              <p class="card-text"><i class="fa-solid fa-envelope mr-2"></i><%= @user.email %></p>
+            </div>
           </div>
-        </div>
-        <div class="row justify-content-end mt-2 mr-2">
-          <%= link_to '削除', admin_user_path(@user), method: :delete, data: { confirm: '本当にこのユーザーを削除しますか？' } %> 
+          <div class="row mt-4">
+            <div class="col text-right">
+              <%= link_to '削除', admin_user_path(@user), method: :delete, data: { confirm: '本当にこのユーザーを削除しますか？' } %> 
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="container d-flex justify-content-center mt-4">
+  <div class="row d-flex justify-content-center mt-4">
     <h2>コメント一覧</h2>
   </div>
+
     <% if @user.post_comments.present? %>
-      <div class="card-list-container py-1">
-        <div class="card w-50 mx-auto mt-4 shadow-lg">
-          <div class="card-body">
-            <div class="row">
-              <% @user.post_comments.each do |post_comment| %>
-                <div class="col-12">
-                  <div class="row ml-2">
-                    <%= post_comment.created_at.strftime('%Y/%m/%d') %>
-                  </div>
-                  <div class="row ml-2">
-                    <%= post_comment.comment %>
-                  </div>
-                  <div class="row ml-2 d-flex justify-content-end align-items-end mr-2">
-                    <div class="post_show mr-4">
-                      <%= link_to "投稿詳細", admin_post_path(post_comment.post.id) %>
+      <div class="row d-flex justify-content-center">
+        <div class="col-10 col-sm-8">
+          <div class="card mt-4 mb-4 shadow-lg">
+            <div class="card-body">
+              <div class="row">
+                <% @user.post_comments.each do |post_comment| %>
+                  <div class="col-12">
+                    <div class="row ml-2">
+                      <%= post_comment.created_at.strftime('%Y/%m/%d') %>
                     </div>
-                    <div class="delete">
-                      <%= link_to "削除", admin_post_comment_path(post_comment.id), method: :delete, "data-confirm" => "本当にこのコメントを削除しますか？" %>
+                    <div class="row ml-2">
+                      <%= post_comment.comment %>
+                    </div>
+                    <div class="row ml-2 d-flex justify-content-end align-items-end mr-2">
+                      <div class="post_show mr-4">
+                        <%= link_to "投稿詳細", admin_post_path(post_comment.post.id) %>
+                      </div>
+                      <div class="delete">
+                        <%= link_to "削除", admin_post_comment_path(post_comment.id), method: :delete, "data-confirm" => "本当にこのコメントを削除しますか？" %>
+                      </div>
                     </div>
                   </div>
-                </div>
-              <% end %>
+                <% end %>
+              </div>
             </div>
           </div>
         </div>
@@ -61,4 +70,4 @@
       </div>
     <% end %>  
   </div>
-</main>
+</div>
