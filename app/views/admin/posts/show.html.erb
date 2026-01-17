@@ -2,15 +2,15 @@
   <h2>投稿詳細</h2>
 </div>
 
-<div class="card-list-container py-5">
-  <div class="card w-50 mx-auto mt-4 mb-4 shadow-lg">
+<div class="row py-5">
+  <div class="col-10 col-sm-6 mx-auto my-4 shadow-lg">
     <div class="card-body">
       <div class="row">
-        <div class="col-9">
+        <div class="col-sm-9 mb-2">
           <p class="card-text"><strong><%= @post.title %></p></strong>
           <p class="card-text"><%= @post.body %></p>
         </div>    
-        <div class="col-3">
+        <div class="col-12 d-flex justify-content-center col-sm-3">
           <% if @post.post_image.attached? %>
             <%= image_tag @post.post_image, size: "170x170" %>
           <% else %>
@@ -26,22 +26,23 @@
         <% end %>
         <p class="created mr-4"><%= @post.created_at.strftime("%Y-%m-%d")%></p>
         <p class="category mr-4"><i class="fa-solid fa-tag mr-1"></i>カテゴリー：<%= @post.category%></p>
-        <p class="likes text-dark mb-3 mr-4"><i class="fa-solid fa-thumbs-up mr-1" aria-hidden="true"></i><strong><%= link_to "#{@post.likes.count} いいね", likes_admin_post_path(@post.id), class: "text-dark"%></strong>
+        <p class="likes mr-4"><i class="fa-solid fa-thumbs-up mr-1" aria-hidden="true"></i><strong><%= link_to "#{@post.likes.count} いいね", likes_admin_post_path(@post.id), class: "text-dark"%></strong>
       </div>
 
       <div class="row mt-4">
         <p>コメント件数：<%= @post.post_comments.count %></p>
       </div>
+
       <div class="row mt-4">
         <% @post.post_comments.each do |post_comment| %>
-          <div class="col-2 mb-4">
+          <div class="col-3 col-sm-2 mb-4">
             <% if post_comment.user %>
               <%= image_tag post_comment.user.get_user_image(70,70) %>
             <% elsif post_comment.store %>
               <%= image_tag post_comment.store.get_store_image(70,70) %>
             <% end %>
           </div>
-          <div class="col-10">
+          <div class="col-9 col-sm-10">
             <div class="row ml-2">
               <% if post_comment.user %>
                 <%= link_to admin_user_path(post_comment.user.id) do %>
@@ -57,7 +58,7 @@
             <div class="row ml-2">
               <%= post_comment.comment %>
             </div>
-            <div class="row d-flex justify-content-end align-items-end mt-4 mr-3">
+            <div class="row d-flex justify-content-end align-items-end mt-2 mr-3">
               <div class="delete">
                 <%= link_to "削除", admin_post_comment_path(post_comment.id), method: :delete, "data-confirm" => "本当にこのコメントを削除しますか？" %>
               </div>
@@ -65,6 +66,7 @@
           </div>
         <% end %>
       </div>
+
     </div>
   </div>
 </div>
